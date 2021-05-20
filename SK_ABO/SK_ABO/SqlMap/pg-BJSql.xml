@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.BJ" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_BJ_AgentiaWarehouse" type="SKABO.Common.Models.BJ.T_BJ_AgentiaWarehouse" />
+    <typeAlias alias="T_BJ_Camera" type="SKABO.Common.Models.BJ.T_BJ_Camera" />
+    <typeAlias alias="T_BJ_Centrifuge" type="SKABO.Common.Models.BJ.T_BJ_Centrifuge" />
+    <typeAlias alias="T_BJ_DeepPlate" type="SKABO.Common.Models.BJ.T_BJ_DeepPlate" />
+    <typeAlias alias="T_BJ_GelSeat" type="SKABO.Common.Models.BJ.T_BJ_GelSeat" />
+    <typeAlias alias="T_BJ_GelWarehouse" type="SKABO.Common.Models.BJ.T_BJ_GelWarehouse" />
+    <typeAlias alias="T_BJ_Piercer" type="SKABO.Common.Models.BJ.T_BJ_Piercer" />
+    <typeAlias alias="T_BJ_SampleRack" type="SKABO.Common.Models.BJ.T_BJ_SampleRack" />
+    <typeAlias alias="T_BJ_Scaner" type="SKABO.Common.Models.BJ.T_BJ_Scaner" />
+    <typeAlias alias="T_BJ_Tip" type="SKABO.Common.Models.BJ.T_BJ_Tip" />
+    <typeAlias alias="T_BJ_Unload" type="SKABO.Common.Models.BJ.T_BJ_Unload" />
+    <typeAlias alias="T_BJ_WastedSeat" type="SKABO.Common.Models.BJ.T_BJ_WastedSeat" />
+    </alias>
+  <resultMaps>
+    <resultMap id="BJ_AgentiaWarehouse_Map" class="T_BJ_AgentiaWarehouse">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Count" column="count"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="Z" column="z"/>
+      <result property="MinWidth" column="Min_Width"/>
+      <result property="FixPoint1" column="Fix_Point1"/>
+      <result property="FixIndex1" column="Fix_Index1"/>
+      <result property="FixPoint2" column="Fix_Point2"/>
+      <result property="FixIndex2" column="Fix_Index2"/>
+      <result property="FixPoint3" column="Fix_Point3"/>
+      <result property="FixIndex3" column="Fix_Index3"/>
+      <result property="FixPoint4" column="Fix_Point4"/>
+      <result property="FixIndex4" column="Fix_Index4"/>
+      <result property="FixPoint5" column="Fix_Point5"/>
+      <result property="FixIndex5" column="Fix_Index5"/>
+      <result property="Limit" column="max_limit"/>
+      <result property="Gap" column="gap"/>
+      <result property="DeepForUl" column="deep_for_ul"/>
+    </resultMap>
+    <resultMap id="BJ_Camera_Map" class="T_BJ_Camera">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="HandX" column="hand_x"/>
+      <result property="HandY" column="hand_y"/>
+      <result property="HandZ" column="hand_z"/>
+      <result property="OrderForLED" column="order_for_led"/>
+    </resultMap>
+    <resultMap id="BJ_Centrifuge_Map" class="T_BJ_Centrifuge">
+      <result property="ID" column="id"/>
+      <result property="Code" column="code"/>
+      <result property="Name" column="name"/>
+      <result property="HandX" column="hand_x"/>
+      <result property="HandY" column="hand_y"/>
+      <result property="HandZ" column="hand_z"/>
+      <result property="ZLimit" column="z_limit"/>
+      <result property="ZCatch" column="z_catch"/>
+      <result property="ZPut" column="z_put"/>
+      <result property="Gel0" column="gel0"/>
+      <result property="Gel1" column="gel1"/>
+      <result property="Gel2" column="gel2"/>
+      <result property="Gel3" column="gel3"/>
+      <result property="Gel4" column="gel4"/>
+      <result property="Gel5" column="gel5"/>
+      <result property="Gel6" column="gel6"/>
+      <result property="Gel7" column="gel7"/>
+      <result property="Gel8" column="gel8"/>
+      <result property="Gel9" column="gel9"/>
+      <result property="Gel10" column="gel10"/>
+      <result property="Gel11" column="gel11"/>
+      <result property="HandY0" column="handy0"/>
+      <result property="HandY1" column="handy1"/>
+      <result property="HandY2" column="handy2"/>
+      <result property="HandY3" column="handy3"/>
+      <result property="HandY4" column="handy4"/>
+      <result property="HandY5" column="handy5"/>
+      <result property="HandY6" column="handy6"/>
+      <result property="HandY7" column="handy7"/>
+      <result property="HandY8" column="handy8"/>
+      <result property="HandY9" column="handy9"/>
+      <result property="HandY10" column="handy10"/>
+      <result property="HandY11" column="handy11"/>
+      <result property="X1ForDoorOpen" column="x1_for_open"/>
+      <result property="X1ForDoorClose" column="x1_for_close"/>
+      <result property="X2ForDoorOpen" column="x2_for_open"/>
+      <result property="X2ForDoorClose" column="x2_for_close"/>
+      <result property="XForDoorOpenSpeed" column="x_for_open_speed"/>
+      <result property="XForDoorCloseSpeed" column="x_for_close_speed"/>
+      <result property="YForDoorOpenSpeed" column="y_for_open_speed"/>
+      <result property="YForDoorCloseSpeed" column="y_for_close_speed"/>
+      <result property="ZForDoor" column="z_for_door"/>
+      <result property="Y1ForOpen" column="y1_for_open"/>
+      <result property="Y2ForOpen" column="y2_for_open"/>
+      <result property="Y1ForClose" column="y1_for_close"/>
+      <result property="Y2ForClose" column="y2_for_close"/>
+      <result property="Status" column="status"/>
+    </resultMap>
+    <resultMap id="BJ_DeepPlate_Map" class="T_BJ_DeepPlate">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="Z" column="z"/>
+      <result property="MinWidth" column="Min_Width"/>
+      <result property="FixPoint1" column="Fix_Point1"/>
+      <result property="FixIndex1" column="Fix_Index1"/>
+      <result property="FixPoint2" column="Fix_Point2"/>
+      <result property="FixIndex2" column="Fix_Index2"/>
+      <result property="FixPoint3" column="Fix_Point3"/>
+      <result property="FixIndex3" column="Fix_Index3"/>
+      <result property="FixPoint4" column="Fix_Point4"/>
+      <result property="FixIndex4" column="Fix_Index4"/>
+      <result property="FixPoint5" column="Fix_Point5"/>
+      <result property="FixIndex5" column="Fix_Index5"/>
+      <result property="FZ" column="fz"/>
+      <result property="GapX" column="gap_x"/>
+      <result property="GapY" column="gap_y"/>
+      <result property="CountX" column="count_x"/>
+      <result property="CountY" column="count_y"/>
+      <result property="Limit" column="max_limit"/>
+      <result property="DeepForUl" column="Deep_For_Ul"/>
+    </resultMap>
+    <resultMap id="BJ_GelSeat_Map" class="T_BJ_GelSeat">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Count" column="Count"/>
+      <result property="Code" column="code"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="Z" column="z"/>
+      <result property="MinWidth" column="Min_Width"/>
+      <result property="FixPoint1" column="Fix_Point1"/>
+      <result property="FixIndex1" column="Fix_Index1"/>
+      <result property="FixPoint2" column="Fix_Point2"/>
+      <result property="FixIndex2" column="Fix_Index2"/>
+      <result property="FixPoint3" column="Fix_Point3"/>
+      <result property="FixIndex3" column="Fix_Index3"/>
+      <result property="FixPoint4" column="Fix_Point4"/>
+      <result property="FixIndex4" column="Fix_Index4"/>
+      <result property="FixPoint5" column="Fix_Point5"/>
+      <result property="FixIndex5" column="Fix_Index5"/>
+      <result property="ZLimit" column="z_limit"/>
+      <result property="ZCatch" column="z_catch"/>
+      <result property="ZPut" column="z_put"/>
+      <result property="Gap" column="Gap"/>
+      <result property="Code" column="code"/>
+      <result property="Purpose" column="Purpose"/>
+      <result property="YForPie" column="y_for_pie"/>
+      <result property="ZForPie" column="z_for_pie"/>
+      <result property="GapForPie" column="gap_for_pie"/>
+      <result property="InjectorX" column="Injector_X"/>
+      <result property="InjectorY" column="Injector_Y"/>
+      <result property="InjectorZ" column="Injector_Z"/>
+      <result property="InjectorGapX" column="Injector_Gap_X"/>
+      <result property="InjectorGapY" column="Injector_Gap_Y"/>
+    </resultMap>
+    <resultMap id="BJ_GelWarehouse_Map" class="T_BJ_GelWarehouse">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Count" column="Count"/>
+      <result property="HandX" column="hand_x"/>
+      <result property="HandY" column="hand_y"/>
+      <result property="HandZ" column="hand_z"/>
+      <result property="ZLimit" column="z_limit"/>
+      <result property="ZCatch" column="z_catch"/>
+      <result property="ZPut" column="z_put"/>
+      <result property="Gap" column="Gap"/>
+      <result property="Code" column="code"/>
+      <result property="StoreX" column="Store_X"/>
+      <result property="DetectX" column="Detect_X"/>
+      <result property="DoorX" column="Door_X"/>
+    </resultMap>
+    <resultMap id="BJ_Piercer_Map" class="T_BJ_Piercer">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Y1" column="Y1"/>
+      <result property="StepY" column="Step_Y"/>
+      <result property="Z" column="z"/>
+    </resultMap>
+    <resultMap id="BJ_SampleRack_Map" class="T_BJ_SampleRack">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Count" column="Count"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="Z" column="z"/>
+      <result property="MinWidth" column="Min_Width"/>
+      <result property="FixPoint1" column="Fix_Point1"/>
+      <result property="FixIndex1" column="Fix_Index1"/>
+      <result property="FixPoint2" column="Fix_Point2"/>
+      <result property="FixIndex2" column="Fix_Index2"/>
+      <result property="FixPoint3" column="Fix_Point3"/>
+      <result property="FixIndex3" column="Fix_Index3"/>
+      <result property="FixPoint4" column="Fix_Point4"/>
+      <result property="FixIndex4" column="Fix_Index4"/>
+      <result property="FixPoint5" column="Fix_Point5"/>
+      <result property="FixIndex5" column="Fix_Index5"/>
+      <result property="Gap" column="Gap"/>
+      <result property="FZ" column="FZ"/>
+      <result property="Limit" column="max_Limit"/>
+      <result property="ReaderX" column="reader_x"/>
+      <result property="Index" column="index"/>
+      <result property="DeepForUl" column="deep_for_ul"/>
+    </resultMap>
+    <resultMap id="BJ_Scaner_Map" class="T_BJ_Scaner">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="HandX" column="hand_x"/>
+      <result property="HandY" column="hand_y"/>
+      <result property="HandZ" column="hand_z"/>
+      <result property="Port" column="Port"/>
+      <result property="Purpose" column="Purpose"/>
+      <result property="ScanerType" column="Scaner_Type"/>
+    </resultMap>
+    <resultMap id="BJ_Tip_Map" class="T_BJ_Tip">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="MinWidth" column="Min_Width"/>
+      <result property="FixPoint1" column="Fix_Point1"/>
+      <result property="FixIndex1" column="Fix_Index1"/>
+      <result property="FixPoint2" column="Fix_Point2"/>
+      <result property="FixIndex2" column="Fix_Index2"/>
+      <result property="FixPoint3" column="Fix_Point3"/>
+      <result property="FixIndex3" column="Fix_Index3"/>
+      <result property="FixPoint4" column="Fix_Point4"/>
+      <result property="FixIndex4" column="Fix_Index4"/>
+      <result property="FixPoint5" column="Fix_Point5"/>
+      <result property="FixIndex5" column="Fix_Index5"/>
+      <result property="GapX" column="Gap_x"/>
+      <result property="GapY" column="Gap_Y"/>
+      <result property="Limit" column="max_Limit"/>
+      <result property="FZ" column="fz"/>
+      <result property="CountX" column="Count_X"/>
+      <result property="CountY" column="Count_Y"/>
+      <result property="Hard" column="Hard"/>
+      <result property="Volumn" column="Volumn"/>
+    </resultMap>
+    <resultMap id="BJ_Unload_Map" class="T_BJ_Unload">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="Count" column="Count"/>
+      <result property="X" column="x"/>
+      <result property="Y" column="y"/>
+      <result property="Z" column="z"/>
+      <result property="FZ" column="fz"/>
+      <result property="FirstX" column="First_X"/>
+    </resultMap>
+    <resultMap id="BJ_WastedSeat_Map" class="T_BJ_WastedSeat">
+      <result property="ID" column="id"/>
+      <result property="Name" column="name"/>
+      <result property="HandX" column="hand_x"/>
+      <result property="HandY" column="hand_y"/>
+      <result property="HandZ" column="hand_z"/>
+      <result property="Purpose" column="purpose"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <select id="QueryT_BJ_AgentiaWarehouse" parameterClass="System.String" resultMap="BJ_AgentiaWarehouse_Map" >
+      SELECT * FROM BJ_Agentia_Warehouse order by Name
+    </select>
+    <select id="QueryT_BJ_Camera" parameterClass="System.String" resultMap="BJ_Camera_Map" >
+      SELECT * FROM BJ_Camera
+    </select>
+    <select id="QueryT_BJ_Centrifuge" parameterClass="System.String" resultMap="BJ_Centrifuge_Map" >
+      SELECT * FROM BJ_Centrifuge order by Code,Name
+    </select>
+    <select id="QueryT_BJ_DeepPlate" parameterClass="System.String" resultMap="BJ_DeepPlate_Map" >
+      SELECT * FROM BJ_Deep_Plate order by Name
+    </select>
+    <select id="QueryT_BJ_GelSeat" parameterClass="System.String" resultMap="BJ_GelSeat_Map" >
+      SELECT * FROM BJ_Gel_Seat order by Purpose,Name
+    </select>
+    <select id="QueryT_BJ_GelWarehouse" parameterClass="System.String" resultMap="BJ_GelWarehouse_Map" >
+      SELECT * FROM BJ_Gel_Warehouse order by Name
+    </select>
+    <select id="QueryT_BJ_Piercer" parameterClass="System.String" resultMap="BJ_Piercer_Map" >
+      SELECT * FROM BJ_Piercer
+    </select>
+    <select id="QueryT_BJ_SampleRack" parameterClass="System.String" resultMap="BJ_SampleRack_Map" >
+      SELECT * FROM BJ_Sample_Rack order by index, Name
+    </select>
+    <select id="QueryT_BJ_Scaner" parameterClass="System.String" resultMap="BJ_Scaner_Map" >
+      SELECT * FROM BJ_Scaner
+    </select>
+    <select id="QueryT_BJ_Tip" parameterClass="System.String" resultMap="BJ_Tip_Map" >
+      SELECT * FROM BJ_Tip order by Name
+    </select>
+    <select id="QueryT_BJ_Unload" parameterClass="System.String" resultMap="BJ_Unload_Map" >
+      SELECT * FROM BJ_Unload
+    </select>
+    <select id="QueryT_BJ_WastedSeat" parameterClass="System.String" resultMap="BJ_WastedSeat_Map" >
+      SELECT * FROM BJ_Wasted_Seat order by Name
+    </select>
+
+    <insert id="InsertT_BJ_AgentiaWarehouse"  parameterClass="T_BJ_AgentiaWarehouse">
+      insert into BJ_Agentia_Warehouse(id,Name,Count,X,Y,Z,Min_Width,max_Limit,Deep_For_Ul,Gap) values(#ID#,
+      #Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Limit#,#DeepForUl#,#Gap#)
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('bj_agentia_warehouse_seq'::regclass) as ID
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_AgentiaWarehouse"  parameterClass="T_BJ_AgentiaWarehouse">
+      update BJ_Agentia_Warehouse set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      max_Limit=#Limit#,Deep_For_Ul=#DeepForUl#,Gap=#Gap# where ID=#ID#
+    </update>
+    
+    <insert id="InsertT_BJ_Camera"  parameterClass="T_BJ_Camera">
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('bj_camera_seq'::regclass) as ID
+      </selectKey>
+      insert into BJ_Camera(id,Name,Hand_X,Hand_Y,Hand_Z,Order_For_LED) values
+      (#ID#,#Name#,#HandX#,#HandY#,#HandZ#,#OrderForLED#)
+
+    </insert>
+    <update id="UpdateT_BJ_Camera"  parameterClass="T_BJ_Camera">
+      update BJ_Camera set Name=#Name#,Hand_X=#HandX#,Hand_Y=#HandY#,Hand_Z=#HandZ#,Order_For_LED=#OrderForLED# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Centrifuge"  parameterClass="T_BJ_Centrifuge">
+      insert into BJ_Centrifuge(id,Code,Name,Hand_X,Hand_Y,Hand_Z,
+      Gel0,Gel1,Gel2,Gel3,Gel4,Gel5,Gel6,Gel7,Gel8,Gel9,Gel10,Gel11,
+      HandY0,HandY1,HandY2,HandY3,HandY4,HandY5,HandY6,HandY7,HandY8,HandY9,HandY10,HandY11,
+      Z_For_Door,Y1_For_Open,Y2_For_Open,Y1_For_Close,Y2_For_Close,Status,z_limit,z_catch,z_put,x1_for_open,x1_for_close,x2_for_open,x2_for_close,
+      x_for_open_speed,x_for_close_speed,y_for_open_speed,y_for_close_speed) values(#ID#,#Code#,#Name#,#HandX#,#HandY#,#HandZ#,
+      #Gel0#,#Gel1#,#Gel2#,#Gel3#,#Gel4#,#Gel5#,#Gel6#,#Gel7#,#Gel8#,#Gel9#,#Gel10#,#Gel11#,
+      #HandY0#,#HandY1#,#HandY2#,#HandY3#,#HandY4#,#HandY5#,#HandY6#,#HandY7#,#HandY8#,#HandY9#,#HandY10#,#HandY11#,
+      #ZForDoor#,#Y1ForOpen#,#Y2ForOpen#,#Y1ForClose#,#Y2ForClose#,#Status#,#ZLimit#,#ZCatch#,#ZPut#,
+      #X1ForDoorOpen#,#X1ForDoorClose#,#X2ForDoorOpen#,#X2ForDoorClose#,
+      #XForDoorOpenSpeed#,#XForDoorCloseSpeed#,#YForDoorOpenSpeed#,#YForDoorCloseSpeed#)
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('bj_centrifuge_seq'::regclass) as ID
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Centrifuge"  parameterClass="T_BJ_Centrifuge">
+      update BJ_Centrifuge set Code=#Code#, Name=#Name#,Hand_X=#HandX#,Hand_Y=#HandY#,Hand_Z=#HandZ#,
+      Gel0=#Gel0#,Gel1=#Gel1#,Gel2=#Gel2#,Gel3=#Gel3#,Gel4=#Gel4#,Gel5=#Gel5#,Gel6=#Gel6#,Gel7=#Gel7#,Gel8=#Gel8#,Gel9=#Gel9#,Gel10=#Gel10#,Gel11=#Gel11#,
+      HandY0=#HandY0#,HandY1=#HandY1#,HandY2=#HandY2#,HandY3=#HandY3#,HandY4=#HandY4#,HandY5=#HandY5#,HandY6=#HandY6#,HandY7=#HandY7#,HandY8=#HandY8#,HandY9=#HandY9#,HandY10=#HandY10#,HandY11=#HandY11#,
+      Z_For_Door=#ZForDoor#,Y1_For_Open=#Y1ForOpen#,Y2_For_Open=#Y2ForOpen#,Y1_For_Close=#Y1ForClose#,Y2_For_Close=#Y2ForClose#,Status=#Status#,z_limit=#ZLimit#,z_catch=#ZCatch#,z_put=#ZPut#,
+      X1_For_Open=#X1ForDoorOpen#,X1_For_Close=#X1ForDoorClose#,X2_For_Open=#X2ForDoorOpen#,X2_For_Close=#X2ForDoorClose#,
+      X_For_Open_Speed=#XForDoorOpenSpeed#,X_For_Close_Speed=#XForDoorCloseSpeed#,Y_For_Open_Speed=#YForDoorOpenSpeed#,Y_For_Close_Speed=#YForDoorCloseSpeed# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_DeepPlate"  parameterClass="T_BJ_DeepPlate">
+      insert into BJ_Deep_Plate(id,Name,X,Y,Z,Min_Width,Gap_X,Gap_Y,Count_X,Count_Y,max_Limit,Deep_For_Ul,fz) values
+      (#ID#,#Name#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #GapX#,#GapY#,#CountX#,#CountY#,#Limit#,#DeepForUl#,#FZ#)
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('bj_deep_plate_id_seq'::regclass) as ID
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_DeepPlate"  parameterClass="T_BJ_DeepPlate">
+      update BJ_Deep_Plate set Name=#Name#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Gap_X=#GapX#,Gap_Y=#GapY#,Count_X=#CountX#,Count_Y=#CountY#,max_Limit=#Limit#,Deep_For_Ul=#DeepForUl#,fz=#FZ# where ID=#ID#
+    </update>
+    
+    <insert id="InsertT_BJ_GelSeat"  parameterClass="T_BJ_GelSeat">
+      insert into BJ_Gel_Seat(id,Name,Count,X,Y,Z,Min_Width,Z_Limit,Z_Catch,Z_Put,Gap,Purpose,y_for_pie,z_for_pie,Gap_For_Pie,Code
+      ,Injector_X,Injector_Y,Injector_Z,Injector_Gap_X,Injector_Gap_Y ) values
+      (#ID#,#Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #ZLimit#,#ZCatch#,#ZPut#,#Gap#,#Purpose#,#YForPie#,#ZForPie#,#GapForPie#,#Code#
+      ,#InjectorX#,#InjectorY#,#InjectorZ#,#InjectorGapX#,#InjectorGapY#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_gel_seat_id_seq'::regclass) as ID
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_GelSeat"  parameterClass="T_BJ_GelSeat">
+      update BJ_Gel_Seat set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Z_Limit=#ZLimit#,z_catch=#ZCatch#,z_put=#ZPut#,Gap=#Gap#,
+      Purpose=#Purpose#,y_for_pie=#YForPie#,z_for_pie=#ZForPie#,Gap_For_Pie=#GapForPie#,code=#Code#
+      ,Injector_X=#InjectorX#,Injector_Y=#InjectorY#,Injector_Z=#InjectorZ#,Injector_Gap_X=#InjectorGapX#,Injector_Gap_Y=#InjectorGapY# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_GelWarehouse"  parameterClass="T_BJ_GelWarehouse">
+      insert into BJ_Gel_Warehouse(id,Name,Count,Hand_X,Hand_Y,Hand_Z,Gap,Store_X,Detect_X,Door_X,z_limit,Z_Catch,Z_Put,Code) values
+      (#ID#,#Name#,#Count#,#HandX#,#HandY#,#HandZ#,#Gap#,#StoreX#,#DetectX#,#DoorX#,#ZLimit#,#ZCatch#,#ZPut#,#Code#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_gel_warehouse_id_seq'::regclass) AS ID
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_GelWarehouse"  parameterClass="T_BJ_GelWarehouse">
+      update BJ_Gel_Warehouse set Name=#Name#,Count=#Count#,Hand_X=#HandX#,Hand_Y=#HandY#,Hand_Z=#HandZ#,Gap=#Gap#,Store_X=#StoreX#,Detect_X=#DetectX#,Door_X=#DoorX#,z_limit=#ZLimit#,z_catch=#ZCatch#,z_put=#ZPut#,Code=#Code# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Piercer"  parameterClass="T_BJ_Piercer">
+      insert into BJ_Piercer(id,Name,Y1,Step_Y,Z) values(#ID#,#Name#,#Y1#,#StepY#,#Z#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_piercer_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Piercer"  parameterClass="T_BJ_Piercer">
+      update BJ_Piercer set Name=#Name#,Y1=#Y1#,Step_Y=#StepY#,Z=#Z#  where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_SampleRack"  parameterClass="T_BJ_SampleRack">
+      insert into BJ_Sample_Rack(id,Name,Count,X,Y,Z,Min_Width,Gap,FZ,max_Limit,Reader_x,index,deep_for_ul) values(#ID#,#Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Gap#,#FZ#,#Limit#,#ReaderX#,#Index#,#DeepForUl#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_sample_rack_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_SampleRack"  parameterClass="T_BJ_SampleRack">
+      update BJ_Sample_Rack set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Gap=#Gap#,FZ=#FZ#,max_Limit=#Limit# ,Reader_X=#ReaderX#,index=#Index#, deep_for_ul=#DeepForUl# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Scaner"  parameterClass="T_BJ_Scaner">
+      insert into BJ_Scaner(id,Name,Hand_X,Hand_Y,Hand_Z,Port,Purpose,Scaner_Type) values(#ID#,#Name#,#HandX#,#HandY#,#HandZ#,#Port#,#Purpose#,#ScanerType#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_scaner_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Scaner"  parameterClass="T_BJ_Scaner">
+      update BJ_Scaner set Name=#Name#,Hand_X=#HandX#,Hand_Y=#HandY#,Hand_Z=#HandZ#,Port=#Port#,Purpose=#Purpose# ,Scaner_Type=#ScanerType# where ID=#ID#
+    </update>
+    
+
+    <insert id="InsertT_BJ_Tip"  parameterClass="T_BJ_Tip">
+      insert into BJ_Tip(id,Name,X,Y,Min_Width,max_Limit,Gap_X,Gap_Y,FZ,Count_X,Count_Y,Hard,Volumn) values
+      (#ID#,#Name#,#X#,#Y#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Limit#,#GapX#,#GapY#,#FZ#,#CountX#,#CountY#,#Hard#,#Volumn#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_tip_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Tip"  parameterClass="T_BJ_Tip">
+      update BJ_Tip set Name=#Name#,X=#X#,Y=#Y#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      max_Limit=#Limit#,Gap_X=#GapX#,Gap_Y=#GapY#,FZ=#FZ#,
+      Count_X=#CountX#,Count_Y=#CountY#,Hard=#Hard#,Volumn=#Volumn#  where ID=#ID#
+    </update>
+    
+    <insert id="InsertT_BJ_Unload"  parameterClass="T_BJ_Unload">
+      insert into BJ_Unload(id,Name,X,Y,Z,Count,FZ,First_X) values(#ID#,#Name#,#X#,#Y#,#Z#,#Count#,#FZ#,#FirstX#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_unload_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Unload"  parameterClass="T_BJ_Unload">
+      update BJ_Unload set Name=#Name#,X=#X#,Y=#Y#,Z=#Z#,Count=#Count#,FZ=#FZ#,First_X=#FirstX#  where ID=#ID#
+    </update>
+    
+    
+    <insert id="InsertT_BJ_WastedSeat"  parameterClass="T_BJ_WastedSeat">
+      insert into BJ_Wasted_Seat(id,Name,Hand_X,Hand_Y,Hand_Z,Purpose) values(#ID#,#Name#,#HandX#,#HandY#,#HandZ#,#Purpose#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('bj_unload_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_WastedSeat"  parameterClass="T_BJ_WastedSeat">
+      update BJ_Wasted_Seat set Name=#Name#,Hand_X=#HandX#,Hand_Y=#HandY#,Hand_Z=#HandZ# ,Purpose=#Purpose# where ID=#ID#
+    </update>
+    
+  <delete id="DeleteBJ" parameterClass="HashTable">
+    Delete from $TableName$ where ID=#ID#
+  </delete>
+  </statements>
+</sqlMap>

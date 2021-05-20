@@ -1,0 +1,25 @@
+﻿<Window x:Class="SKABO.Common.Views.AlertView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SKABO.Common.Views"
+        mc:Ignorable="d"
+        Background="{StaticResource MainBg}"
+        Title="AlertView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label_message" Content="{Binding Content}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="172" Margin="0,41,0,0" />
+        <Grid Grid.Row="2" Background="{DynamicResource BottomToolBarBg}" >
+
+            <Button Content="消音"  Margin="0,10,400,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF1F6;" Height="40" HorizontalAlignment="Right" Click="DoCloseAlert" Name="Btn_CloseAlert"/>
+            <Button Content="忽略"  Margin="0,10,270,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF1F6;" Height="40" HorizontalAlignment="Right" Click="DoIgnore" Name="Btn_Ignore"/>
+            <Button Content="重试"  Margin="0,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Right" Click="DoRetry" Name="Btn_Retry"/>
+            <Button Content="取消"  Margin="0,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Click="Cancel" Name="Btn_Cancel"/>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.User" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <statements>
+   
+    <select id="QueryT_User" parameterClass="System.String" resultClass="SKABO.Common.Models.User.T_User" >
+      <![CDATA[ 
+      Select u.*,r.Name as RoleName,r.RightValue from T_User u left join T_Role r on (u.RoleCode=r.Code)
+      WHERE LoginName =  #value# and u.Status<>0
+      ]]>
+    </select>
+    <select id="QueryT_UserByPY" parameterClass="System.String" resultClass="SKABO.Common.Models.User.T_User" >
+      <![CDATA[ 
+      Select u.*,r.Name as RoleName,r.RightValue from T_User u left join T_Role r on (u.RoleCode=r.Code)
+      WHERE PY like  '%$value$%' and u.Status<>0
+      ]]>
+    </select>
+    <insert id="InsertT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+
+      INSERT INTO T_User (LoginName,LoginPwd,IsAdmin,PY,RoleCode,CreatedTime,CreatedBy) VALUES
+      (#LoginName#,#LoginPwd#,#IsAdmin#,#PY#,#RoleCode#,#CreatedTime#,#CreatedBy#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_User_LastLoginTime"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update T_User set LastLoginTime=#LastLoginTime# where ID=#ID#
+    </update>
+    <update id="UpdateT_User_PWD"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update T_User set LoginPwd=#LoginPwd# where ID=#ID#
+    </update>
+    <update id="UpdateT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+
+      Update T_User set LoginName=#LoginName#,LoginPwd=#LoginPwd#,IsAdmin=#IsAdmin#,PY=#PY#,RoleCode=#RoleCode# where ID=#ID#
+    </update>
+    <update id="DeleteT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update T_User set Status=0 where ID=#ID#
+    </update>
+    <update id="UpdateRoleRight"  parameterClass="SKABO.Common.Models.User.T_Role">
+      Update T_Role set RightValue=#RightValue# where Code=#Code#
+    </update>
+    <select id="QueryAllUser" resultClass="SKABO.Common.Models.User.T_User">
+    <![CDATA[ 
+      Select u.*,r.Name as RoleName,r.RightValue from T_User u left join T_Role r on (u.RoleCode=r.Code) where u.Status<>0
+      ]]>
+    </select>
+    <select id="QueryAllRole" resultClass="SKABO.Common.Models.User.T_Role">
+      <![CDATA[ 
+      Select * from T_Role
+      ]]>
+    </select>
+  </statements>
+</sqlMap>

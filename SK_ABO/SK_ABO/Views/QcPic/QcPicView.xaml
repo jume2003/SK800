@@ -1,0 +1,22 @@
+﻿<Window x:Class="SK_ABO.Views.QcPic.QcPicView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.QcPic"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:s="https://github.com/canton7/Stylet"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:QcPicViewModel}"
+        Title="QcPicViewModel" Height="559" Width="784">
+    <Grid>
+        <oxy:Plot Title="{Binding Title}">
+            <oxy:Plot.Series>
+                <oxy:LineSeries  Title="A" ItemsSource="{Binding TAPoints}"/>
+                <oxy:LineSeries  Title="B" ItemsSource="{Binding TBPoints}"/>
+                <oxy:LineSeries  Title="D" ItemsSource="{Binding TDPoints}"/>
+                <oxy:LineSeries  Title="Control" ItemsSource="{Binding TCPoints}"/>
+            </oxy:Plot.Series>
+        </oxy:Plot>
+    </Grid>
+</Window>

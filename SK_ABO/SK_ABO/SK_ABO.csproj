@@ -1,0 +1,1187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91AB979B-41FD-4727-9D1D-5E9DA449662B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SK_ABO</RootNamespace>
+    <AssemblyName>SK_ABO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>main.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.DynamicProxy, Version=1.1.5.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\Castle.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="GxIAPINET">
+      <HintPath>..\..\SK_ABO_Libs\GxIAPINET.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.Common, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\IBatisNet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataAccess, Version=1.9.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\IBatisNet.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="IBatisNet.DataMapper, Version=1.6.2.0, Culture=neutral, PublicKeyToken=ed781d9fc396c6ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\IBatisNet.DataMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\Microsoft.Expression.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.0.4\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.2.0.0\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=2.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.2.4.0\lib\net452\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="Stylet, Version=1.1.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stylet.1.1.21\lib\net45\Stylet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\System.Drawing.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SK_ABO_Libs\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="ExcelSystem\ExcelSystem.cs" />
+    <Compile Include="Pages\ColorValueConverter.cs" />
+    <Compile Include="Pages\Device\BJParameterView.xaml.cs">
+      <DependentUpon>BJParameterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\BJParameterViewModel.cs" />
+    <Compile Include="Pages\Device\CentrifugeView.xaml.cs">
+      <DependentUpon>CentrifugeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\CentrifugeViewModel.cs" />
+    <Compile Include="Pages\Device\CommunicationSettingView.xaml.cs">
+      <DependentUpon>CommunicationSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\CommunicationSettingViewModel.cs" />
+    <Compile Include="Pages\Device\GlobalSettingView.xaml.cs">
+      <DependentUpon>GlobalSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\GlobalSettingViewModel.cs" />
+    <Compile Include="Pages\Device\JYQParameterView.xaml.cs">
+      <DependentUpon>JYQParameterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\JYQParameterViewModel.cs" />
+    <Compile Include="Pages\Device\JYQView.xaml.cs">
+      <DependentUpon>JYQView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\JYQViewModel.cs" />
+    <Compile Include="Pages\Device\MachineHandView.xaml.cs">
+      <DependentUpon>MachineHandView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\MachineHandViewModel.cs" />
+    <Compile Include="Pages\Device\MixerAndCouveuseView.xaml.cs">
+      <DependentUpon>MixerAndCouveuseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\MixerAndCouveuseViewModel.cs" />
+    <Compile Include="Pages\Device\PiercerView.xaml.cs">
+      <DependentUpon>PiercerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\PiercerViewModel.cs" />
+    <Compile Include="Pages\Device\ScanerView.xaml.cs">
+      <DependentUpon>ScanerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Device\ScanerViewModel.cs" />
+    <Compile Include="Pages\ExperimentManagementView.xaml.cs">
+      <DependentUpon>ExperimentManagementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExperimentManagementViewModel.cs" />
+    <Compile Include="Pages\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomeViewModel.cs" />
+    <Compile Include="Pages\QcEtcView.xaml.cs">
+      <DependentUpon>QcEtcView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\QcEtcViewModel.cs" />
+    <Compile Include="Pages\QueryView.xaml.cs">
+      <DependentUpon>QueryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\QueryViewModel.cs" />
+    <Compile Include="Pages\RunLogView.xaml.cs">
+      <DependentUpon>RunLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunLogViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPBRXQView.xaml.cs">
+      <DependentUpon>FPBRXQView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPBRXQViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPBRXSHXBView.xaml.cs">
+      <DependentUpon>FPBRXSHXBView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPBRXSHXBViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPSJView.xaml.cs">
+      <DependentUpon>FPSJView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPSJViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPXXYXQView.xaml.cs">
+      <DependentUpon>FPXXYXQView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPXXYXQViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPXXYXSHXBView.xaml.cs">
+      <DependentUpon>FPXXYXSHXBView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPXXYXSHXBViewModel.cs" />
+    <Compile Include="Pages\SetStep\FPYTView.xaml.cs">
+      <DependentUpon>FPYTView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\FPYTViewModel.cs" />
+    <Compile Include="Pages\SetStep\LXJDZView.xaml.cs">
+      <DependentUpon>LXJDZView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\LXJDZViewModel.cs" />
+    <Compile Include="Pages\SetStep\YSView.xaml.cs">
+      <DependentUpon>YSView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\YSViewModel.cs" />
+    <Compile Include="Pages\SetStep\ZKDFYView.xaml.cs">
+      <DependentUpon>ZKDFYView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SetStep\ZKDFYViewModel.cs" />
+    <Compile Include="Pages\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ShellViewModel.cs" />
+    <Compile Include="Pages\SystemView.xaml.cs">
+      <DependentUpon>SystemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SystemViewModel.cs" />
+    <Compile Include="Pages\TaskManagementView.xaml.cs" />
+    <Compile Include="Pages\TaskManagementViewModel.cs" />
+    <Compile Include="UserCtrls\Barcode_Control.xaml.cs">
+      <DependentUpon>Barcode_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\Base\BJControl.cs" />
+    <Compile Include="UserCtrls\Camera_Control.xaml.cs">
+      <DependentUpon>Camera_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\CheckTube_UserControl.xaml.cs">
+      <DependentUpon>CheckTube_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\Centrifuge_Control.xaml.cs">
+      <DependentUpon>Centrifuge_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\Centrifuge_plc_Control.xaml.cs">
+      <DependentUpon>Centrifuge_plc_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\Couveuse_Control.xaml.cs">
+      <DependentUpon>Couveuse_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\DoubleSpeedMotor_control.xaml.cs">
+      <DependentUpon>DoubleSpeedMotor_control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\Electromotor_Control.xaml.cs">
+      <DependentUpon>Electromotor_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DeviceParam\Mixermotor_Control.xaml.cs">
+      <DependentUpon>Mixermotor_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DilutionPlace_Control.xaml.cs">
+      <DependentUpon>DilutionPlace_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\DilutionReagentPlace_Control.xaml.cs">
+      <DependentUpon>DilutionReagentPlace_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\GelCardRack_Control.xaml.cs">
+      <DependentUpon>GelCardRack_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\GelCount_Control.xaml.cs">
+      <DependentUpon>GelCount_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\LoseNeedle_UserControl.xaml.cs">
+      <DependentUpon>LoseNeedle_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\Piercer_Control.xaml.cs">
+      <DependentUpon>Piercer_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\ReagentRack_Control.xaml.cs">
+      <DependentUpon>ReagentRack_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\RubbishBin_Control.xaml.cs">
+      <DependentUpon>RubbishBin_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\SampleRack_Control.xaml.cs">
+      <DependentUpon>SampleRack_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\TipCount_Control.xaml.cs">
+      <DependentUpon>TipCount_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\TipDish_Control.xaml.cs">
+      <DependentUpon>TipDish_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\TubeResult_Control.xaml.cs">
+      <DependentUpon>TubeResult_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\User\FindUser_Control.xaml.cs">
+      <DependentUpon>FindUser_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\User\RightList_Control.xaml.cs">
+      <DependentUpon>RightList_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ResultMapValidationRule.cs" />
+    <Compile Include="Views\AboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AboutUs.Designer.cs">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CanDebug\PcbDebug.xaml.cs">
+      <DependentUpon>PcbDebug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CanDebug\PcbDebugModel.cs" />
+    <Compile Include="Views\CheckLots\CheckLotsView.xaml.cs">
+      <DependentUpon>CheckLotsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CheckLots\CheckLotsViewModel.cs" />
+    <Compile Include="Views\Device\BJConfigView.xaml.cs">
+      <DependentUpon>BJConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Device\BJConfigViewModel.cs" />
+    <Compile Include="Views\Device\BJParametersView.xaml.cs">
+      <DependentUpon>BJParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Device\BJParametersViewModel.cs" />
+    <Compile Include="Views\Device\DeviceConsoleView.xaml.cs">
+      <DependentUpon>DeviceConsoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Device\DeviceConsoleViewModel.cs" />
+    <Compile Include="Views\Device\ShowDeepPlateView.xaml.cs">
+      <DependentUpon>ShowDeepPlateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Device\ShowDeepPlateViewModel.cs" />
+    <Compile Include="Views\GEL\CreateOrModifyViewModel.cs" />
+    <Compile Include="Views\GEL\CreateOrModifyView.xaml.cs">
+      <DependentUpon>CreateOrModifyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GEL\EditStepView.xaml.cs">
+      <DependentUpon>EditStepView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GEL\EditStepViewModel.cs" />
+    <Compile Include="Views\GEL\GelManagerView.xaml.cs">
+      <DependentUpon>GelManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GEL\GelManagerViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicManagerView.xaml.cs">
+      <DependentUpon>LogicManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicManagerViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\ActionView.xaml.cs">
+      <DependentUpon>ActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\ActionViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\CentrifugeView.xaml.cs">
+      <DependentUpon>CentrifugeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\CentrifugeViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\FixedAbsorbView.xaml.cs">
+      <DependentUpon>FixedAbsorbView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\FixedAbsorbViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\FixedDivideView.xaml.cs">
+      <DependentUpon>FixedDivideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\FixedDivideViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\GelWarehouseView.xaml.cs">
+      <DependentUpon>GelWarehouseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\GelWarehouseViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\HatcherView.xaml.cs">
+      <DependentUpon>HatcherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\HatcherViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\HexView.xaml.cs">
+      <DependentUpon>HexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\HexViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\LiquidLevelDetectView.xaml.cs">
+      <DependentUpon>LiquidLevelDetectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\LiquidLevelDetectViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\LogicStepScreen.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\LoopEndView.xaml.cs">
+      <DependentUpon>LoopEndView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\LoopEndViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\LoopView.xaml.cs">
+      <DependentUpon>LoopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\LoopViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\MessageViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\PierceView.xaml.cs">
+      <DependentUpon>PierceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\PierceViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\PutGELView.xaml.cs">
+      <DependentUpon>PutGELView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\PutGELViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\SubFuncView.xaml.cs">
+      <DependentUpon>SubFuncView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\SubFuncViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\TakeAndPutGelView.xaml.cs">
+      <DependentUpon>TakeAndPutGelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\TakeAndPutGelViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\TakeGELView.xaml.cs">
+      <DependentUpon>TakeGELView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\TakeGELViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\TakeTipView.xaml.cs">
+      <DependentUpon>TakeTipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\TakeTipViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\Time-lapseView.xaml.cs">
+      <DependentUpon>Time-lapseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\Time-lapseViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\TimingView.xaml.cs">
+      <DependentUpon>TimingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\TimingViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\UploadTipView.xaml.cs">
+      <DependentUpon>UploadTipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\UploadTipViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\WaitTimingView.xaml.cs">
+      <DependentUpon>WaitTimingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\WaitTimingViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\XYMoveView.xaml.cs">
+      <DependentUpon>XYMoveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\XYMoveViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\ZLiquidLevelMoveView.xaml.cs">
+      <DependentUpon>ZLiquidLevelMoveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\ZLiquidLevelMoveViewModel.cs" />
+    <Compile Include="Views\LogicProgram\LogicStep\ZMoveView.xaml.cs">
+      <DependentUpon>ZMoveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\LogicStep\ZMoveViewModel.cs" />
+    <Compile Include="Views\LogicProgram\NewLogicView.xaml.cs">
+      <DependentUpon>NewLogicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogicProgram\NewLogicViewModel.cs" />
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginViewModel.cs" />
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainViewModel.cs" />
+    <Compile Include="Views\MessageWin.xaml.cs">
+      <DependentUpon>MessageWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotDuplex\ScanSampleView.xaml.cs">
+      <DependentUpon>ScanSampleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NotDuplex\ScanSampleViewModel.cs" />
+    <Compile Include="Views\PauseView.xaml.cs">
+      <DependentUpon>PauseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PauseViewModel.cs" />
+    <Compile Include="Views\QcPic\QcPicView.xaml.cs">
+      <DependentUpon>QcPicView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QcPic\QcPicViewModel.cs" />
+    <Compile Include="Views\QueryStaInfo\QueryStaInfoView.xaml.cs">
+      <DependentUpon>QueryStaInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QueryStaInfo\QueryStaInfoViewModel.cs" />
+    <Compile Include="Views\SecurityView.xaml.cs">
+      <DependentUpon>SecurityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SecurityViewModel.cs" />
+    <Compile Include="Views\Start\FirstStepView.xaml.cs">
+      <DependentUpon>FirstStepView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Start\FirstStepViewModel.cs" />
+    <Compile Include="Pages\StatisticAnalysisView.xaml.cs">
+      <DependentUpon>StatisticAnalysisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StatisticAnalysisViewModel.cs" />
+    <Compile Include="Views\SystemConfig\SystemConfigView.xaml.cs">
+      <DependentUpon>SystemConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemConfig\SystemConfigViewModel.cs" />
+    <Compile Include="Views\Trace\TraceManageView.xaml.cs">
+      <DependentUpon>TraceManageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Trace\TraceManageViewModel.cs" />
+    <Compile Include="Views\User\ChangePwdView.xaml.cs">
+      <DependentUpon>ChangePwdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EditUserView.xaml.cs">
+      <DependentUpon>EditUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EditUserViewModel.cs" />
+    <Compile Include="Views\User\UserManagerView.xaml.cs">
+      <DependentUpon>UserManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserManagerViewModel.cs" />
+    <Compile Include="Views\ValidatePwdView.xaml.cs">
+      <DependentUpon>ValidatePwdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ValidatePwdViewModel.cs" />
+    <Page Include="Pages\Device\BJParameterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\CentrifugeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\CommunicationSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\GlobalSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\JYQParameterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\JYQView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\MachineHandView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\MixerAndCouveuseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\PiercerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Device\ScanerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ExperimentManagementView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\QcEtcView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\QueryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPBRXQView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPBRXSHXBView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPSJView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPXXYXQView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPXXYXSHXBView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\FPYTView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SetStep\LXJDZView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\YSView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SetStep\ZKDFYView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ShellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SystemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TaskManagementView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles\DefaultStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\Barcode_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\Camera_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\CentrifugeLeaf_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\Centrifuge_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\CentrifugeLeaf_Control.xaml.cs">
+      <DependentUpon>CentrifugeLeaf_Control.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\Centrifuge_Control.xaml.cs">
+      <DependentUpon>Centrifuge_Control.xaml</DependentUpon>
+    </Compile>
+    <Page Include="UserCtrls\CheckTube_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\Centrifuge_Control.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\Centrifuge_plc_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\Couveuse_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\DoubleSpeedMotor_control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\Electromotor_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DeviceParam\Mixermotor_Control.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserCtrls\DilutionPlace_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\DilutionReagentPlace_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\GelCardRack_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\GelCount_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\LoseNeedle_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\Piercer_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\ReagentRack_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\RubbishBin_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\SampleRack_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\TipCount_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\TipDish_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\TubeResult_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\User\FindUser_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserCtrls\User\RightList_Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CanDebug\PcbDebug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CheckLots\CheckLotsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Device\BJConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Device\BJParametersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Device\DeviceConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Device\ShowDeepPlateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GEL\CreateOrModifyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GEL\EditStepView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GEL\GelManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\ActionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\CentrifugeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\FixedAbsorbView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\FixedDivideView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\GelWarehouseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\HatcherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\HexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\LiquidLevelDetectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\LoopEndView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\LoopView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\MessageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\PierceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\PutGELView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\SubFuncView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\TakeAndPutGelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\TakeGELView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\TakeTipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\Time-lapseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\TimingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\UploadTipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\WaitTimingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\XYMoveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\ZLiquidLevelMoveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\LogicStep\ZMoveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogicProgram\NewLogicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessageWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NotDuplex\ScanSampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PauseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QcPic\QcPicView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QueryStaInfo\QueryStaInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SecurityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Start\FirstStepView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\StatisticAnalysisView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemConfig\SystemConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Trace\TraceManageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\ChangePwdView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\EditUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\UserManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ValidatePwdView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlMap\GelSql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AboutUs.resx">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Fakes Include="Fakes\Microsoft.Expression.Interactions.fakes" />
+    <None Include="HomeLayout.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="log4Net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="providers.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlMap.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DrapControlLibrary\DrapControlLibrary.csproj">
+      <Project>{06a7d854-70eb-40a2-8902-9d66cd44ed01}</Project>
+      <Name>DrapControlLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ihardware\SKABO.Ihardware.csproj">
+      <Project>{BA2FB41B-281C-493B-A816-15F6C901465C}</Project>
+      <Name>SKABO.Ihardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.BLL\SKABO.BLL.csproj">
+      <Project>{58ba6148-3c77-4bc3-a340-66d4fbdb0788}</Project>
+      <Name>SKABO.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Camera\SKABO.Camera.csproj">
+      <Project>{947ade47-fee7-4032-9b1a-20f6e7c175ba}</Project>
+      <Name>SKABO.Camera</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Common\SKABO.Common.csproj">
+      <Project>{30cd92ee-5148-4833-a047-3f34767566d7}</Project>
+      <Name>SKABO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.DAL\SKABO.DAL.csproj">
+      <Project>{0F58B89E-29DD-48C5-ACDE-7FC264A28794}</Project>
+      <Name>SKABO.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Hardware\SKABO.Hardware.csproj">
+      <Project>{AF6532E6-8856-46F1-A12D-EF7D732EA4F3}</Project>
+      <Name>SKABO.Hardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Judger\SKABO.Judger.csproj">
+      <Project>{31c602c6-ac5c-41e8-924d-43e1d2190d0b}</Project>
+      <Name>SKABO.Judger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\JudgerSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bg10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\UserSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sk32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\GelType.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CustomerImage\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\BJSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\TraceSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\Phrase.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\Logic\Timer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\Logic\Loop.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\LogicSql.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="main.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SqlMap\PlcParameterSql.xml">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\pg-BJSql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlMap\pg-GelSql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlMap\pg-JudgerSql.xml" />
+    <EmbeddedResource Include="SqlMap\pg-LogicSql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlMap\pg-PlcParameterSql.xml" />
+    <EmbeddedResource Include="SqlMap\pg-TraceSql.xml" />
+    <EmbeddedResource Include="SqlMap\pg-UserSql.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\BJParameters\" />
+    <Folder Include="Config\Centrifuge\" />
+    <Folder Include="Views\Duplex\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlMap\pg-SysConfig.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.3.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.3.0.0\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.3.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.3.0.0\build\Fody.targets'))" />
+  </Target>
+  <ProjectExtensions />
+</Project>

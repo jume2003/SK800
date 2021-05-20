@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Timers>
+  <Timer id="0" name="计时器-0"/>
+  <Timer id="1" name="计时器-1"/>
+  <Timer id="2" name="计时器-2"/>
+  <Timer id="3" name="计时器-3"/>
+  <Timer id="4" name="计时器-4"/>
+  <Timer id="5" name="计时器-5"/>
+  <Timer id="6" name="计时器-6"/>
+  <Timer id="7" name="计时器-7"/>
+  <Timer id="8" name="计时器-8"/>
+  <Timer id="9" name="计时器-9"/>
+</Timers>

@@ -1,0 +1,46 @@
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ActionCommand 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ComparisonConditionType 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.ComparisonLogic 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ForwardChaining 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.DataBindingHelper 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveScope 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.TagType 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveBehaviorBase 生成存根: method System.Void Microsoft.Expression.Interactivity.Layout.FluidMoveBehaviorBase.UpdateLayoutTransitionCore(System.Windows.FrameworkElement child, System.Windows.FrameworkElement root, System.Object tag, Microsoft.Expression.Interactivity.Layout.FluidMoveBehaviorBase+TagData newTagData) unstubbable: 方法是抽象的，因此无法用作存根，方法签名类型对于 exported or assembly(Microsoft.Expression.Interactions.Fakes) or subtype(FluidMoveBehaviorBase in assembly Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveSetTagBehavior 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveBehavior 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.ITickTimer 生成存根: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Input.KeyTriggerFiredOn 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Media.ControlStoryboardOption 生成存根: 类型是一个值类型。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Media.Effects.TransitionEffect 生成存根: method System.Windows.Media.Composition.DUCE+ResourceHandle System.Windows.Media.Effects.Effect.AddRefOnChannelCore(System.Windows.Media.Composition.DUCE+Channel channel) unstubbable: 方法是抽象的，因此无法用作存根，方法签名类型对于 exported or assembly(Microsoft.Expression.Interactions.Fakes) or subtype(TransitionEffect in assembly Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.TypeConverterHelper 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.VisualStateUtilities 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.BlendSDK.RuntimeVersion 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.BlendSDK.VersionConstants 生成存根: 类型已密封。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 ExceptionStringTable 生成存根: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.CallMethodAction+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.CallMethodAction+MethodDescriptor 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ChangePropertyAction+<>c__DisplayClass1 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ComparisonConditionType 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.ComparisonLogic 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ForwardChaining 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ICondition 生成填充码: 类型是一个接口。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.DataBindingHelper 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ExtendedVisualStateManager+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ExtendedVisualStateManager+<>c__DisplayClass6 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ExtendedVisualStateManager+DummyEasingFunction 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ExtendedVisualStateManager+OriginalLayoutValueRecord 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.ExtendedVisualStateManager+WrapperCanvas 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveScope 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.TagType 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveBehaviorBase+TagData 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveBehavior+<>c__DisplayClass5 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Layout.FluidMoveBehavior+<>c__DisplayClass7 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.ITickTimer 生成填充码: 类型是一个接口。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Input.KeyTriggerFiredOn 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Media.PlaySoundAction+<>c__DisplayClass2 生成填充码: 类型不受支持，因为存在内部限制。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Media.ControlStoryboardOption 生成填充码: 类型是一个枚举。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.Core.TimerTrigger+DispatcherTickTimer 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.Interactivity.TypeConverterHelper 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.BlendSDK.RuntimeVersion 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 Microsoft.Expression.BlendSDK.VersionConstants 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。
+D:\SK\SK_SVN\SK_ABO\SK_ABO\Fakes\Microsoft.Expression.Interactions.fakes : warning : 无法为 ExceptionStringTable 生成填充码: 类型对 exported or assembly(Microsoft.Expression.Interactions.Fakes) 不可见。

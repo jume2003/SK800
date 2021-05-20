@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Logic" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_LogicStep" type="SKABO.Common.Models.Logic.T_LogicStep" />
+    <typeAlias alias="T_LogicTest" type="SKABO.Common.Models.Logic.T_LogicTest"/>
+  </alias>
+  <resultMaps>
+    <resultMap id="T_LogicTest_Map" class="T_LogicTest">
+      <result property="ID" column="ID"/>
+      <result property="Name" column="Name"/>
+      <result property="LogicSteps" column="ID" select="QueryLogicStepByProgramId"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <select id="QueryT_LogicTest" parameterClass="System.String" resultMap="T_LogicTest_Map" >
+      SELECT * FROM T_LogicTest
+    </select>
+    <insert id="InsertT_LogicTest"  parameterClass="T_LogicTest">
+
+      INSERT INTO T_LogicTest (Name) VALUES
+      (#Name#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_LogicTest"  parameterClass="T_LogicTest">
+
+      Update T_LogicTest set Name=#Name# where ID=#ID#
+    </update>
+
+    <select id="QueryLogicStepByProgramId" parameterClass="int" resultClass="T_LogicStep">
+      <![CDATA[ 
+        select * 
+        from T_LogicStep  
+        where ProgramID = #ID#  order by OrderIndex
+        ]]>
+    </select>
+    <insert id="InsertT_LogicStep"  parameterClass="T_LogicStep">
+
+      insert into T_LogicStep(Name,OrderIndex,Parameters,StepID,ProgramID) values(#Name#,#OrderIndex#,#Parameters#,#StepID#,#ProgramID#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_LogicStep"  parameterClass="T_LogicStep">
+      update T_LogicStep set Name=#Name#,OrderIndex=#OrderIndex#,Parameters=#Parameters#,StepID=#StepID#,ProgramID=#ProgramID# where ID=#ID#
+    </update>
+
+  </statements>
+</sqlMap>

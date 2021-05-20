@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Judger" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <resultMaps>
+    <resultMap id="Judge_Paramer_Map" class="SKABO.Common.Models.Judger.T_JudgeParamer">
+      <result property="ID" column="id"/>
+      <result property="MSN" column="msn"/>
+      <result property="AreaType" column="area_type"/>
+      <result property="TNo" column="t_no"/>
+      <result property="StartX" column="start_x"/>
+      <result property="StartY" column="start_y"/>
+      <result property="EndX" column="end_x"/>
+      <result property="EndY" column="end_y"/>
+    </resultMap>
+    <resultMap id="TS_Camera_Map" class="SKABO.Common.Models.Judger.T_Camera">
+      <result property="ID" column="id"/>
+      <result property="MSN" column="msn"/>
+      <result property="ExposureTime" column="exposure_time"/>
+      <result property="Gain" column="gain"/>
+      <result property="RB" column="rb"/>
+      <result property="GB" column="gb"/>
+      <result property="BB" column="bb"/>
+      <result property="Remark" column="remark"/>
+    </resultMap>
+    <resultMap id="TS_PLP_Map" class="SKABO.Common.Models.Judger.T_ParseLEDParameter">
+      <result property="ID" column="id"/>
+      <result property="DSpace" column="D_Space"/>
+      <result property="LEDBrushWidth" column="LED_Brush_Width"/>
+      <result property="LEDThreshold" column="LED_Threshold"/>
+    </resultMap>
+    <resultMap id="TS_PTP_Map" class="SKABO.Common.Models.Judger.T_ParseTubeParameter">
+      <result property="ID" column="id"/>
+      <result property="TSpace" column="T_Space"/>
+      <result property="BottomHeight" column="Bottom_Height"/>
+      <result property="TestWidth" column="Test_Width"/>
+      <result property="Threshold" column="Threshold"/>
+      <result property="Angle" column="Angle"/>
+      <result property="HueMaxThreshold" column="Hue_Max_Threshold"/>
+      <result property="HueMinThreshold" column="Hue_Min_Threshold"/>
+      <result property="SMaxThreshold" column="S_Max_Threshold"/>
+      <result property="SMinThreshold" column="S_Min_Threshold"/>
+      <result property="BMaxThreshold" column="B_Max_Threshold"/>
+      <result property="BMinThreshold" column="B_Min_Threshold"/>
+      <result property="Layer1" column="Layer1"/>
+      <result property="Layer2" column="Layer2"/>
+      <result property="Layer3" column="Layer3"/>
+      <result property="Layer4" column="Layer4"/>
+      <result property="Layer5" column="Layer5"/>
+      <result property="Layer6" column="Layer6"/>
+    
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <statement id="QueryT_JudgeParamer" parameterClass="System.String" resultMap="Judge_Paramer_Map" >
+      SELECT *
+      FROM Ts_Judge_Paramer
+      WHERE MSN =  #value# order by Area_Type,T_No
+    </statement>
+    <insert id="InsertT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('ts_judge_paramer_id_seq'::regclass) as ID
+      </selectKey>
+      INSERT INTO Ts_JudgeParamer (ID,MSN,Area_Type,T_No,Start_X,Start_Y,End_X,End_Y) VALUES
+      (#ID#,#MSN#,#AreaType#,#TNo#,#StartX#,#StartY#,#EndX#,#EndY#)
+
+    </insert>
+    <update id="UpdateT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+
+      Update Ts_Judge_Paramer set MSN=#MSN#,Area_Type=#AreaType#,T_No=#TNo#,Start_X=#StartX#,Start_Y=#StartY#,End_X=#EndX#,End_Y=#EndY# where ID=#ID#
+    </update>
+
+    <select id="QueryT_Camera" parameterClass="System.String" resultMap="TS_Camera_Map" >
+      SELECT *
+      FROM TS_Camera
+      WHERE MSN =  #value# 
+    </select>
+    <insert id="InsertT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('camera_id_seq'::regclass) as ID
+      </selectKey>
+      INSERT INTO TS_Camera (id,MSN,Exposure_Time,Gain,RB,GB,BB,Remark) VALUES
+      (#ID#,#MSN#,#ExposureTime#,#Gain#,#RB#,#GB#,#BB#,#Remark#)
+    </insert>
+    <update id="UpdateT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+
+      Update TS_Camera set MSN=#MSN#,Exposure_Time=#ExposureTime#,Gain=#Gain#,RB=#RB#,GB=#GB#,BB=#BB#,Remark=#Remark# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_ParseTubeParameter" parameterClass="SKABO.Common.Models.Judger.T_ParseTubeParameter">
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('ts_parse_tube_paramter_id_seq'::regclass) as ID
+      </selectKey>
+      INSERT INTO public.ts_parse_tube_paramter
+      (id,t_space, bottom_height, test_width, threshold, angle, layer1, layer2, layer3, layer4, layer5, layer6,
+      hue_max_threshold, hue_min_threshold, s_max_threshold, s_min_threshold, b_max_threshold, b_min_threshold)
+      VALUES(#ID#,#TSpace#, #BottomHeight#, #TestWidth#, #Threshold#, #Angle#, #Layer1#, #Layer2#, #Layer3#, #Layer4#, #Layer5#, #Layer6#,
+      #HueMaxThreshold#, #HueMinThreshold#, #SMaxThreshold#, #SMinThreshold#, #BMaxThreshold#, #BMinThreshold#);
+    </insert>
+    <update id="UpdateT_ParseTubeParameter" parameterClass="SKABO.Common.Models.Judger.T_ParseTubeParameter">
+      UPDATE public.ts_parse_tube_paramter
+      SET t_space=#TSpace#, bottom_height=#BottomHeight#, test_width=#TestWidth#, threshold=#Threshold#,
+      angle=#Angle#, layer1=#Layer1#, layer2=#Layer2#, layer3=#Layer3#, layer4=#Layer4#, layer5=#Layer5#, layer6=#Layer6#,
+      hue_max_threshold=#HueMaxThreshold#, b_min_threshold=#BMinThreshold#, hue_min_threshold=#HueMinThreshold#, s_max_threshold=#SMaxThreshold#, s_min_threshold=#SMinThreshold#, b_max_threshold=#BMaxThreshold#
+      WHERE id=#ID#;
+    </update>
+    <select id="QueryT_ParseTubeParameter" resultMap="TS_PTP_Map">
+      select * from public.ts_parse_tube_paramter
+    </select>
+    <insert id="InsertT_ParseLEDParameter" parameterClass="SKABO.Common.Models.Judger.T_ParseLEDParameter">
+      <selectKey resultClass="int" property="ID" type="pre">
+        select nextval('ts_parse_led_parameter_id_seq'::regclass) as ID
+      </selectKey>
+      INSERT INTO public.ts_parse_led_parameter
+      (id,d_space, led_brush_width, led_threshold)
+      VALUES(#ID#,#DSpace#, #LEDBrushWidth#, #LEDThreshold#);
+
+    </insert>
+    <update id="UpdateT_ParseLEDParameter" parameterClass="SKABO.Common.Models.Judger.T_ParseLEDParameter">
+      UPDATE public.ts_parse_led_parameter
+      SET d_space=#DSpace#, led_brush_width=#LEDBrushWidth#, led_threshold=#LEDThreshold#
+      WHERE id=#ID#
+
+    </update>
+    <select id="QueryT_ParseLEDParameter" resultMap="TS_PLP_Map">
+      select * from public.ts_parse_led_parameter
+    </select>
+  </statements>
+</sqlMap>

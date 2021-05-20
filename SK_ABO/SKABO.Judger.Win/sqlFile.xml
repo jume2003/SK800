@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Judger" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+  <statements>
+    <statement id="QueryT_JudgeParamer" parameterClass="System.String" resultClass="SKABO.Common.Models.Judger.T_JudgeParamer" >
+      SELECT *
+      FROM T_JudgeParamer
+      WHERE MSN =  #value# order by AreaType,TNo
+    </statement>
+    <insert id="InsertT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+
+      INSERT INTO T_JudgeParamer ([MSN],[AreaType],[TNo],[StartX],[StartY],[EndX],[EndY]) VALUES
+      (#MSN#,#AreaType#,#TNo#,#StartX#,#StartY#,#EndX#,#EndY#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+
+      Update T_JudgeParamer set MSN=#MSN#,AreaType=#AreaType#,TNo=#TNo#,StartX=#StartX#,StartY=#StartY#,EndX=#EndX#,EndY=#EndY# where ID=#ID#
+    </update>
+
+    <select id="QueryT_Camera" parameterClass="System.String" resultClass="SKABO.Common.Models.Judger.T_Camera" >
+      SELECT *
+      FROM T_Camera
+      WHERE MSN =  #value# 
+    </select>
+    <insert id="InsertT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+
+      INSERT INTO T_Camera (MSN,ExposureTime,Gain,RB,GB,BB,Remark) VALUES
+      (#MSN#,#ExposureTime#,#Gain#,#RB#,#GB#,#BB#,#Remark#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+
+      Update T_Camera set MSN=#MSN#,ExposureTime=#ExposureTime#,Gain=#Gain#,RB=#RB#,GB=#GB#,BB=#BB#,Remark=#Remark# where ID=#ID#
+    </update>
+  </statements>
+</sqlMap>

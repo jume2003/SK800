@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.BJ" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_BJ_AgentiaWarehouse" type="SKABO.Common.Models.BJ.T_BJ_AgentiaWarehouse" />
+    <typeAlias alias="T_BJ_Camera" type="SKABO.Common.Models.BJ.T_BJ_Camera" />
+    <typeAlias alias="T_BJ_Centrifuge" type="SKABO.Common.Models.BJ.T_BJ_Centrifuge" />
+    <typeAlias alias="T_BJ_DeepPlate" type="SKABO.Common.Models.BJ.T_BJ_DeepPlate" />
+    <typeAlias alias="T_BJ_GelSeat" type="SKABO.Common.Models.BJ.T_BJ_GelSeat" />
+    <typeAlias alias="T_BJ_GelWarehouse" type="SKABO.Common.Models.BJ.T_BJ_GelWarehouse" />
+    <typeAlias alias="T_BJ_Piercer" type="SKABO.Common.Models.BJ.T_BJ_Piercer" />
+    <typeAlias alias="T_BJ_SampleRack" type="SKABO.Common.Models.BJ.T_BJ_SampleRack" />
+    <typeAlias alias="T_BJ_Scaner" type="SKABO.Common.Models.BJ.T_BJ_Scaner" />
+    <typeAlias alias="T_BJ_Tip" type="SKABO.Common.Models.BJ.T_BJ_Tip" />
+    <typeAlias alias="T_BJ_Unload" type="SKABO.Common.Models.BJ.T_BJ_Unload" />
+    <typeAlias alias="T_BJ_WastedSeat" type="SKABO.Common.Models.BJ.T_BJ_WastedSeat" />
+    </alias>
+  <resultMaps>
+    
+  </resultMaps>
+  <statements>
+
+    <select id="QueryT_BJ_AgentiaWarehouse" parameterClass="System.String" resultClass="T_BJ_AgentiaWarehouse" >
+      SELECT * FROM T_BJ_AgentiaWarehouse
+    </select>
+    <select id="QueryT_BJ_Camera" parameterClass="System.String" resultClass="T_BJ_Camera" >
+      SELECT * FROM T_BJ_Camera
+    </select>
+    <select id="QueryT_BJ_Centrifuge" parameterClass="System.String" resultClass="T_BJ_Centrifuge" >
+      SELECT * FROM T_BJ_Centrifuge
+    </select>
+    <select id="QueryT_BJ_DeepPlate" parameterClass="System.String" resultClass="T_BJ_DeepPlate" >
+      SELECT * FROM T_BJ_DeepPlate
+    </select>
+    <select id="QueryT_BJ_GelSeat" parameterClass="System.String" resultClass="T_BJ_GelSeat" >
+      SELECT * FROM T_BJ_GelSeat
+    </select>
+    <select id="QueryT_BJ_GelWarehouse" parameterClass="System.String" resultClass="T_BJ_GelWarehouse" >
+      SELECT * FROM T_BJ_GelWarehouse
+    </select>
+    <select id="QueryT_BJ_Piercer" parameterClass="System.String" resultClass="T_BJ_Piercer" >
+      SELECT * FROM T_BJ_Piercer
+    </select>
+    <select id="QueryT_BJ_SampleRack" parameterClass="System.String" resultClass="T_BJ_SampleRack" >
+      SELECT * FROM T_BJ_SampleRack
+    </select>
+    <select id="QueryT_BJ_Scaner" parameterClass="System.String" resultClass="T_BJ_Scaner" >
+      SELECT * FROM T_BJ_Scaner
+    </select>
+    <select id="QueryT_BJ_Tip" parameterClass="System.String" resultClass="T_BJ_Tip" >
+      SELECT * FROM T_BJ_Tip
+    </select>
+    <select id="QueryT_BJ_Unload" parameterClass="System.String" resultClass="T_BJ_Unload" >
+      SELECT * FROM T_BJ_Unload
+    </select>
+    <select id="QueryT_BJ_WastedSeat" parameterClass="System.String" resultClass="T_BJ_WastedSeat" >
+      SELECT * FROM T_BJ_WastedSeat
+    </select>
+
+    <insert id="InsertT_BJ_AgentiaWarehouse"  parameterClass="T_BJ_AgentiaWarehouse">
+      insert into T_BJ_AgentiaWarehouse(Name,Count,X,Y,Z,Min_Width,Limit,DeepForUl) values(
+      #Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Limit#,#DeepForUl#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_AgentiaWarehouse"  parameterClass="T_BJ_AgentiaWarehouse">
+      update T_BJ_AgentiaWarehouse set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Limit=#Limit#,DeepForUl=#DeepForUl# where ID=#ID#
+    </update>
+    
+    <insert id="InsertT_BJ_Camera"  parameterClass="T_BJ_Camera">
+      insert into T_BJ_Camera(Name,HandX,HandY,HandZ,OrderForLED) values
+      (#Name#,#HandX#,#HandY#,#HandZ#,#OrderForLED#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Camera"  parameterClass="T_BJ_Camera">
+      update T_BJ_Camera set Name=#Name#,HandX=#HandX#,HandY=#HandY#,HandZ=#HandZ#,OrderForLED=#OrderForLED# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Centrifuge"  parameterClass="T_BJ_Centrifuge">
+      insert into T_BJ_Centrifuge(Name,HandX,HandY,HandZ,
+      Gel0,Gel1,Gel2,Gel3,Gel4,Gel5,Gel6,Gel7,Gel8,Gel9,Gel10,Gel11,
+      HandY0,HandY1,HandY2,HandY3,HandY4,HandY5,HandY6,HandY7,HandY8,HandY9,HandY10,HandY11,
+      ZForDoor,Y1ForOpen,Y2ForOpen,Y1ForClose,Y2ForClose,Status) values
+      (#Name#,#HandX#,#HandY#,#HandZ#,
+      #Gel0#,#Gel1#,#Gel2#,#Gel3#,#Gel4#,#Gel5#,#Gel6#,#Gel7#,#Gel8#,#Gel9#,#Gel10#,#Gel11#,
+      #HandY0#,#HandY1#,#HandY2#,#HandY3#,#HandY4#,#HandY5#,#HandY6#,#HandY7#,#HandY8#,#HandY9#,#HandY10#,#HandY11#,
+      #ZForDoor#,#Y1ForOpen#,#Y2ForOpen#,#Y1ForClose#,#Y2ForClose#,#Status#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Centrifuge"  parameterClass="T_BJ_Centrifuge">
+      update T_BJ_Centrifuge set Name=#Name#,HandX=#HandX#,HandY=#HandY#,HandZ=#HandZ#,
+      Gel0=#Gel0#,Gel1=#Gel1#,Gel2=#Gel2#,Gel3=#Gel3#,Gel4=#Gel4#,Gel5=#Gel5#,Gel6=#Gel6#,Gel7=#Gel7#,Gel8=#Gel8#,Gel9=#Gel9#,Gel10=#Gel10#,Gel11=#Gel11#,
+      HandY0=#HandY0#,HandY1=#HandY1#,HandY2=#HandY2#,HandY3=#HandY3#,HandY4=#HandY4#,HandY5=#HandY5#,HandY6=#HandY6#,HandY7=#HandY7#,HandY8=#HandY8#,HandY9=#HandY9#,HandY10=#HandY10#,HandY11=#HandY11#,
+      ZForDoor=#ZForDoor#,Y1ForOpen=#Y1ForOpen#,Y2ForOpen=#Y2ForOpen#,Y1ForClose=#Y1ForClose#,Y2ForClose=#Y2ForClose#,Status=#Status# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_DeepPlate"  parameterClass="T_BJ_DeepPlate">
+      insert into T_BJ_DeepPlate(Name,X,Y,Z,Min_Width,GapX,GapY,CountX,CountY,Limit,DeepForUl) values
+      (#Name#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #GapX#,#GapY#,#CountX#,#CountY#,#Limit#,#DeepForUl#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_DeepPlate"  parameterClass="T_BJ_DeepPlate">
+      update T_BJ_DeepPlate set Name=#Name#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      GapX=#GapX#,GapY=#GapY#,CountX=#CountX#,CountY=#CountY#,Limit=#Limit#,DeepForUl=#DeepForUl# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_GelSeat"  parameterClass="T_BJ_GelSeat">
+      insert into T_BJ_GelSeat(Name,Count,X,Y,Z,Min_Width,ZLimit,ZCatch,ZPut,Gap,Purpose,HeatOnCMD,HeatOffCMD,QueryCMD,TempRepair,
+      Code,YForPie,ZForPie,GapForPie,InjectorX,InjectorGapY,InjectorY,InjectorZ,InjectorGapX) values
+      (#Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      ,#ZLimit#,#ZCatch#,#ZPut#,#Gap#,#Purpose#,#HeatOnCMD#,#HeatOffCMD#,#QueryCMD#,#TempRepair#,
+      #Code#,#YForPie#,#ZForPie#,#GapForPie#,#InjectorX#,#InjectorGapY#,#InjectorY#,#InjectorZ#,#InjectorGapX#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_GelSeat"  parameterClass="T_BJ_GelSeat">
+      update T_BJ_GelSeat set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      ZLimit=#ZLimit#,ZCatch=#ZCatch#,ZPut=#ZPut#,Gap=#Gap#,Purpose=#Purpose#,
+      HeatOnCMD=#HeatOnCMD#,HeatOffCMD=#HeatOffCMD#,QueryCMD=#QueryCMD#,TempRepair=#TempRepair#,
+      Code=#Code#,YForPie=#YForPie#,ZForPie=#ZForPie#,GapForPie=#GapForPie#,InjectorX=#InjectorX#,
+      InjectorGapY=#InjectorGapY#,InjectorY=#InjectorY#,InjectorZ=#InjectorZ#,InjectorGapX=#InjectorGapX# where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_GelWarehouse"  parameterClass="T_BJ_GelWarehouse">
+      insert into T_BJ_GelWarehouse(Name,Count,HandX,HandY,HandZ,Gap,StoreX,DetectX,DoorX) values
+      (#Name#,#Count#,#HandX#,#HandY#,#HandZ#,#Gap#,#StoreX#,#DetectX#,#DoorX#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_GelWarehouse"  parameterClass="T_BJ_GelWarehouse">
+      update T_BJ_GelWarehouse set Name=#Name#,Count=#Count#,HandX=#HandX#,HandY=#HandY#,HandZ=#HandZ#,Gap=#Gap#,StoreX=#StoreX#,DetectX=#DetectX#,DoorX=#DoorX#  where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Piercer"  parameterClass="T_BJ_Piercer">
+      insert into T_BJ_Piercer(Name,Y1,StepY,Z) values(#Name#,#Y1#,#StepY#,#Z#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Piercer"  parameterClass="T_BJ_Piercer">
+      update T_BJ_Piercer set Name=#Name#,Y1=#Y1#,StepY=#StepY#,Z=#Z#  where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_SampleRack"  parameterClass="T_BJ_SampleRack">
+      insert into T_BJ_SampleRack(Name,Count,X,Y,Z,Min_Width,Gap,FZ,Limit) values(#Name#,#Count#,#X#,#Y#,#Z#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Gap#,#FZ#,#Limit#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_SampleRack"  parameterClass="T_BJ_SampleRack">
+      update T_BJ_SampleRack set Name=#Name#,Count=#Count#,X=#X#,Y=#Y#,Z=#Z#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Gap=#Gap#,FZ=#FZ#,Limit=#Limit#  where ID=#ID#
+    </update>
+
+    <insert id="InsertT_BJ_Scaner"  parameterClass="T_BJ_Scaner">
+      insert into T_BJ_Scaner(Name,HandX,HandY,HandZ,Port,Purpose) values(#Name#,#HandX#,#HandY#,#HandZ#,#Port#,#Purpose#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Scaner"  parameterClass="T_BJ_Scaner">
+      update T_BJ_Scaner set Name=#Name#,HandX=#HandX#,HandY=#HandY#,HandZ=#HandZ#,Port=#Port#,Purpose=#Purpose# where ID=#ID#
+    </update>
+    
+
+    <insert id="InsertT_BJ_Tip"  parameterClass="T_BJ_Tip">
+      insert into T_BJ_Tip(Name,X,Y,Min_Width,Limit,GapX,GapY,FZ,CountX,CountY,Hard,Volumn) values
+      (#Name#,#X#,#Y#,#MinWidth#,
+      #FixPoint1#,#FixPoint2#,#FixPoint3#,#FixPoint4#,#FixPoint5#,
+      #FixIndex1#,#FixIndex2#,#FixIndex3#,#FixIndex4#,#FixIndex5#,
+      #Limit#,#GapX#,#GapY#,#FZ#,#CountX#,#CountY#,#Hard#,#Volumn#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Tip"  parameterClass="T_BJ_Tip">
+      update T_BJ_Tip set Name=#Name#,X=#X#,Y=#Y#,Min_Width=#MinWidth#,
+      Fix_Point1=#FixPoint1#,Fix_Point2=#FixPoint2#,Fix_Point3=#FixPoint3#,Fix_Point4=#FixPoint4#,Fix_Point5=#FixPoint5#,
+      Fix_Index1=#FixIndex1#,Fix_Index2=#FixIndex2#,Fix_Index3=#FixIndex3#,Fix_Index4=#FixIndex4#,Fix_Index5=#FixIndex5#,
+      Limit=#Limit#,GapX=#GapX#,GapY=#GapY#,FZ=#FZ#,CountX=#CountX#,CountY=#CountY#,Hard=#Hard#,Volumn=#Volumn#  where ID=#ID#
+    </update>
+    
+    <insert id="InsertT_BJ_Unload"  parameterClass="T_BJ_Unload">
+      insert into T_BJ_Unload(Name,X,Y,Z,Count,FZ,FirstX) values(#Name#,#X#,#Y#,#Z#,#Count#,#FZ#,#FirstX#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_Unload"  parameterClass="T_BJ_Unload">
+      update T_BJ_Unload set Name=#Name#,X=#X#,Y=#Y#,Z=#Z#,Count=#Count#,FZ=#FZ#,FirstX=#FirstX#  where ID=#ID#
+    </update>
+    
+    
+    <insert id="InsertT_BJ_WastedSeat"  parameterClass="T_BJ_WastedSeat">
+      insert into T_BJ_WastedSeat(Name,HandX,HandY,HandZ) values(#Name#,#HandX#,#HandY#,#HandZ#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_BJ_WastedSeat"  parameterClass="T_BJ_WastedSeat">
+      update T_BJ_WastedSeat set Name=#Name#,HandX=#HandX#,HandY=#HandY#,HandZ=#HandZ#  where ID=#ID#
+    </update>
+    
+  <delete id="DeleteBJ" parameterClass="HashTable">
+    Delete $TableName$ where ID=#ID#
+  </delete>
+  </statements>
+</sqlMap>

@@ -1,0 +1,13 @@
+﻿<UserControl x:Name="Piercer"  x:Class="SK_ABO.UserCtrls.Piercer_Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="Gray" Loaded="Piercer_Loaded">
+    <StackPanel>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="5,2,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" x:Name="rect"/>
+        <Label Content="{Binding PierceName, ElementName=Piercer, Mode=TwoWay}" Height="30" HorizontalAlignment="Stretch"  Margin="0,0,0,0"  VerticalContentAlignment="Top" HorizontalContentAlignment="Center"/>
+    </StackPanel>
+</UserControl>

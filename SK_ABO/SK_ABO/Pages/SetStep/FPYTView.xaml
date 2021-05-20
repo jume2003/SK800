@@ -1,0 +1,106 @@
+﻿<Page x:Class="SK_ABO.Pages.SetStep.FPYTView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.SetStep"
+      mc:Ignorable="d" d:DesignWidth="1608"
+      xmlns:s="https://github.com/canton7/Stylet"
+      d:DataContext="{d:DesignInstance local:FPYTViewModel}"
+      s:View.ActionTarget="{Binding}"
+      xmlns:UserCtrls="clr-namespace:SK_ABO.UserCtrls"
+      xmlns:UserCtrls1="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+      Loaded="{s:Action Page_Loaded}"
+      Title="FPYTView" Height="527.333">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="UserCtrls1:NumericUpDown_Control" >
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinValue" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Stretch" Margin="0,0,0,0"  VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding Param.LiquidList}">
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn Header="液体类型" SelectedItemBinding="{Binding LiquidType}" ItemsSource="{x:Static local:FPYTViewModel.FpytTypeList}"/>
+                    <DataGridTextColumn Binding="{Binding Vol}" ClipboardContentBinding="{x:Null}" Header="容量"/>
+                    <DataGridTextColumn Binding="{Binding BackCapacity}" ClipboardContentBinding="{x:Null}" Header="回吸量"/>
+                    <DataGridTextColumn Binding="{Binding BackAbsTime}" ClipboardContentBinding="{x:Null}" Header="吸液回吸间隔"/>
+                    <DataGridTextColumn Binding="{Binding BackAbsSpeed}" ClipboardContentBinding="{x:Null}" Header="吸液回吸速度"/>
+                    <DataGridTextColumn Binding="{Binding BackSpuTime}" ClipboardContentBinding="{x:Null}" Header="分液回吸间隔"/>
+                    <DataGridTextColumn Binding="{Binding BackSpuSpeed}" ClipboardContentBinding="{x:Null}" Header="分液回吸速度"/>
+                    <DataGridTextColumn Binding="{Binding AbsPressure}" ClipboardContentBinding="{x:Null}" Header="吸液压力值"/>
+                    <DataGridTextColumn Binding="{Binding Deep}" ClipboardContentBinding="{x:Null}" Header="加样深度"/>
+                    <DataGridTextColumn Binding="{Binding DetectorDeep}" ClipboardContentBinding="{x:Null}" Header="液面探测加深"/>
+                    <DataGridTextColumn Binding="{Binding AbsSpeed}" ClipboardContentBinding="{x:Null}" Header="吸液速度"/>
+                    <DataGridTextColumn Binding="{Binding SpuSpeed}" ClipboardContentBinding="{x:Null}" Header="分液速度"/>
+                    <DataGridTextColumn Binding="{Binding DeeSpeed}" ClipboardContentBinding="{x:Null}" Header="加深速度"/>
+                    <DataGridCheckBoxColumn Binding="{Binding IsDetector}" ClipboardContentBinding="{x:Null}" Header="是否探液"/>
+                    <DataGridCheckBoxColumn Binding="{Binding IsAgentia}" ClipboardContentBinding="{x:Null}" Header="是否试剂"/>
+                    <DataGridCheckBoxColumn Binding="{Binding IsSlys}" ClipboardContentBinding="{x:Null}" Header="是否生理盐水"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Vertical">
+
+                <GroupBox Header="分配参数" HorizontalAlignment="Left" Height="146" Margin="0,0,0,0" VerticalAlignment="Top" Width="380">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <Label Content="容量：       "  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0"  Value="{Binding Param.Vol, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="1000"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                            <Label Content="胶柱："  Margin="0,0,0,0" />
+                            <UserCtrls:CheckTube_UserControl Grid.Column="1" Value="{Binding Param.TubeValue, Mode=TwoWay}" HorizontalAlignment="Left" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" Width="280" FontSize="14"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="混合参数" HorizontalAlignment="Left" Height="274" Margin="0,0,0,0" VerticalAlignment="Top" Width="380">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="混合次数："  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0"  Value="{Binding Param.MixTimes, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="100"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="吸液速度："  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0" Value="{Binding Param.AbsSpeed, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="10000"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="分液速度："  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0" Value="{Binding Param.SpuSpeed, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="10000"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="混合加深："  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0" Value="{Binding Param.MixDeep, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="10000"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="混合容量："  Margin="0,0,0,0" />
+                            <UserCtrls1:NumericUpDown_Control Margin="0,0,0,0" Value="{Binding Param.MixCapacity, Mode=TwoWay}" Decimation="1" Step="0.1" MaxValue="10000"/>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,57 @@
+﻿<Page x:Class="SK_ABO.Pages.SetStep.FPBRXQView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.SetStep"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500"
+      xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:FPBRXQViewModel}"
+      s:View.ActionTarget="{Binding}"
+      xmlns:UserCtrls="clr-namespace:SK_ABO.UserCtrls"
+      xmlns:UserCtrls1="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+      Title="FPBRXQView" Loaded="{s:Action Page_Loaded}">
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="UserCtrls1:NumericUpDown_Control" >
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinValue" Value="0"/>
+        </Style>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+        <Label Content="容量："  Margin="0,30,0,0" />
+        <!--<Label Content="液体类别："  Margin="0,65,0,0" /-->
+        <Label Content="凝胶微柱："  Margin="0,10,0,0" />
+        <Label Content="加样深度：" Margin="0,10,0,0" />
+        <Label Content="探液深度：" Margin="0,10,0,0" />
+        <Label Content="回吸速度：" Margin="0,10,0,0" />
+        <Label Content="回吸量：" Margin="0,10,0,0" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <UserCtrls1:NumericUpDown_Control x:Name="NumVol"  Margin="0,30,0,0"  Tag="FPBRXQParam.Vol" Decimation="1" Step="0.1" MaxValue="900"/>
+        <!--<ComboBox Grid.Column="1" Height="25" Width="150" Margin="0,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/-->
+        <UserCtrls:CheckTube_UserControl Grid.Column="1" x:Name="ChkTube" HorizontalAlignment="Left" Height="25" Margin="0,15,0,0" VerticalAlignment="Top" Width="411" Value="{Binding FPBRXQParam.TubeValue, Mode=TwoWay}"/>
+
+        <UserCtrls1:NumericUpDown_Control  Margin="0,10,0,0" Tag="FPBRXQParam.Deep" Decimation="1" Step="0.1" MaxValue="10000"/>
+            <UserCtrls1:NumericUpDown_Control  Margin="0,10,0,0" Tag="FPBRXQParam.DetectorDeep" Decimation="1" Step="0.1" MaxValue="10000"/>
+            <UserCtrls1:NumericUpDown_Control  Margin="0,10,0,0" Tag="FPBRXQParam.BackSpeed" Decimation="0" Step="1" MaxValue="200"/>
+            <UserCtrls1:NumericUpDown_Control  Margin="0,10,0,0" Tag="FPBRXQParam.BackAbsVol" Decimation="2" Step="0.1" MaxValue="900"/>
+        </StackPanel>
+    </Grid>
+</Page>

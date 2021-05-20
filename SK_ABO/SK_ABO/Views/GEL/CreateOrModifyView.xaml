@@ -1,0 +1,185 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.GEL"
+        xmlns:enums="clr-namespace:SKABO.Common.Enums;assembly=SKABO.Common"
+        xmlns:valate="clr-namespace:SK_ABO.Validation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:s="https://github.com/canton7/Stylet"
+        xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" x:Class="SK_ABO.Views.GEL.CreateOrModifyView"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type local:CreateOrModifyViewModel}}"
+        Title="CreateOrModifyView" Height="600" Width="800" Background="{DynamicResource MainBg}" Loaded="{s:Action Window_Loaded}">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="BloodSystem" MethodName="GetNames" ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="enums:BloodSystemEnum"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <XmlDataProvider x:Key="GelTypeProvider"  Source="/SK_ABO;component/Config/GelType.xml" XPath="/Gels"/>
+    </Window.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="GEL卡名称" Margin="10,10,0,0" VerticalAlignment="Top" Height="30"/>
+            <TextBox MaxLength="50" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="180" Height="25" Text="{Binding t_Gel.GelName}"/>
+            <Label Content="实验名称" Margin="5,10,0,0" VerticalAlignment="Top" Height="30"/>
+            <TextBox  Margin="0,10,0,0" VerticalAlignment="Top" Width="180" Height="25" Text="{Binding t_Gel.TestName}" MaxLength="30"/>
+            <Label Content="GEL卡条码MASK"  Margin="5,10,0,0" VerticalAlignment="Top" Height="30"/>
+            <TextBox Margin="0,10,0,0" VerticalAlignment="Top" Width="150" Text="{Binding t_Gel.GelMask}" Height="25"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,40,0,0" Height="40" VerticalAlignment="Top">
+            <Label Height="30" VerticalAlignment="Top" Content="GEL卡类型" Margin="10,10,0,0"/>
+            <ComboBox Height="25" VerticalAlignment="Top" x:Name="CboGelType" Margin="0,10,0,0" Width="100" SelectedValue="{Binding t_Gel.GelType}" ItemsSource="{Binding Source={StaticResource GelTypeProvider}, XPath=/Gels/Gel}" DisplayMemberPath="@name" SelectedValuePath="@value" />
+            <Label Height="30" VerticalAlignment="Top" Content="人份数" HorizontalAlignment="Left" Margin="5,10,0,0"/>
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="70" SelectedIndex="0" Text="{Binding t_Gel.GelRenFen}">
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="4"/>
+            </ComboBox>
+            <CheckBox Height="30" Margin="5,15,0,0" Width="120" Content="MASK在最后" IsChecked="{Binding t_Gel.IsMaskAtEnd}" VerticalAlignment="Top"/>
+            <Label Height="30" Margin="5,10,0,0" VerticalAlignment="Top" Content="启用"/>
+            <UserCtrls:ToggleSwitch_Control  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" IsChecked="{Binding t_Gel.IsEnabled, Mode=TwoWay}"/>
+        </StackPanel>
+        
+        <TabControl x:Name="TabContent" HorizontalAlignment="Stretch"  Margin="0,80,0,0" VerticalAlignment="Stretch" >
+            <TabItem Header="测试步骤">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="dg_Step" HorizontalAlignment="Stretch"  Margin="0,0,0,0" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding GelSteps}" CanUserAddRows="False" LoadingRow="DataGrid_LoadingRow" MouseDoubleClick="{s:Action dataGrid_MouseDoubleClick}" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding StepName}" ClipboardContentBinding="{x:Null}" Header="步骤名称" Width="150" IsReadOnly="True"/>
+                            <DataGridTextColumn Binding="{Binding StepParamters}" ClipboardContentBinding="{x:Null}" Header="参数" Width="*" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" >
+                        <Button Content="编辑"  Margin="10,10,0,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF044;" Height="40" Command="{s:Action EditStep}" CommandParameter="{Binding ElementName=dg_Step, Mode=OneWay}"/>
+                        <Button Content="上移"  Margin="140,10,0,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF062;" Height="40" Command="{s:Action MoveUp}" CommandParameter="{Binding ElementName=dg_Step, Mode=OneWay}"/>
+                        <Button Content="下移"  Margin="270,10,0,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF063;" Height="40" Command="{s:Action MoveDown}" CommandParameter="{Binding ElementName=dg_Step, Mode=OneWay}"/>
+                        <Button Content="删除"  Margin="270,10,0,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF068;" Height="40" Command="{s:Action Delete}" CommandParameter="{Binding ElementName=dg_Step, Mode=OneWay}"/>
+                        <Button Content="确定"  Margin="400,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Right" Command="{s:Action ClickOK}" CommandParameter="{Binding ElementName=dataGrid, Mode=OneWay}"/>
+                        <Button Content="取消"  Margin="400,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Command="{s:Action Close}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="结果表达">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <ScrollViewer HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="500">
+                        <DataGrid x:Name="dataGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding t_Gel.ResultMaps}" BeginningEdit="{s:Action DataGrid_BeginningEdit}" LoadingRow="DataGrid_LoadingRow" >
+                            <DataGrid.RowValidationRules>
+                                <valate:ResultMapValidationRule ValidationStep="UpdatedValue"/>
+                            </DataGrid.RowValidationRules>
+                            <DataGrid.RowValidationErrorTemplate>
+                                <ControlTemplate>
+                                    <Grid Margin="0,-2,0,-2"
+            ToolTip="{Binding (Validation.Errors)[0].ErrorContent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}}">
+                                        <Ellipse StrokeThickness="0" Fill="Red" 
+              Width="{TemplateBinding FontSize}" 
+              Height="{TemplateBinding FontSize}" />
+                                        <TextBlock Text="!" FontSize="{TemplateBinding FontSize}" 
+              FontWeight="Bold" Foreground="White" 
+              HorizontalAlignment="Center"  />
+                                    </Grid>
+                                </ControlTemplate>
+                            </DataGrid.RowValidationErrorTemplate>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding ResultDesc}" ClipboardContentBinding="{x:Null}" Header="结果" Width="200"/>
+                                <DataGridTextColumn Binding="{Binding ResultMap}" ClipboardContentBinding="{x:Null}" Header="表达式" Width="100"/>
+                                <DataGridTextColumn Binding="{Binding Color}" ClipboardContentBinding="{x:Null}" Header="颜色" Width="70" />
+
+                                <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" SelectedValueBinding="{Binding BloodSystemStr}" Header="体系" Width="50" ItemsSource="{Binding Mode=OneWay, Source={StaticResource BloodSystem}}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                    <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top" AutoGenerateColumns="False" Margin="500,10,0,0" Height="350" Width="200" ItemsSource="{Binding Tbs}" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserReorderColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Index}" ClipboardContentBinding="{x:Null}" Header="胶柱号" Width="80" IsReadOnly="True"/>
+                            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="胶柱名称" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" >
+                        <Button Content="确定"  Margin="400,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Right" Command="{s:Action ClickOK}" CommandParameter="{Binding ElementName=dataGrid, Mode=OneWay}"/>
+                        <Button Content="取消"  Margin="400,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Command="{s:Action Close}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="微胶柱判定">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" >
+                        <Button Content="确定"  Margin="400,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Right" Command="{s:Action ClickOK}" CommandParameter="{Binding ElementName=dataGrid, Mode=OneWay}"/>
+                        <Button Content="取消"  Margin="400,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Command="{s:Action Close}"/>
+                    </Grid>
+                    <GroupBox Header="自动判读时，问号先决" HorizontalAlignment="Left" Height="124" Margin="45,38,0,0" VerticalAlignment="Top" Width="671">
+                        <WrapPanel Margin="10,20,0,0">
+                            <CheckBox Content="阳性(4+)" Margin="10,10" Tag="4" IsChecked="{Binding unknown.Positive4}"/>
+                            <CheckBox Content="阳性(3+)" Margin="10,10" Tag="3" IsChecked="{Binding unknown.Positive3}"/>
+                            <CheckBox Content="阳性(2+)" Margin="10,10" Tag="2" IsChecked="{Binding unknown.Positive2}"/>
+                            <CheckBox Content="阳性(1+)" Margin="10,10" Tag="1" IsChecked="{Binding unknown.Positive1}"/>
+                            <CheckBox Content="弱阳(±)" Margin="10,10" Tag="" IsChecked="{Binding unknown.Positive}"/>
+                            <CheckBox Content="完全溶血(H)" Margin="10,10" IsChecked="{Binding unknown.BadSample_H}"/>
+                            <CheckBox Content="部分溶血(PH)" Margin="10,10" IsChecked="{Binding unknown.BadSample_PH}"/>
+                            <CheckBox Content="双群(DCP)" Margin="10,10" IsChecked="{Binding unknown.BadSample_DCP}"/>
+                        </WrapPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="其它">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <Label Content="Lis系统卡类型代码" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="开孔使用刀头" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="单个批次最大卡数" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="开孔的停顿时间(ms)" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="优先级(数据越大越高)" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="判读后的处置" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        
+                        <Label Content="节约使用卡" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+                        <Label Content="交叉配血卡" HorizontalAlignment="Right" Margin="0,5,5,0"/>
+
+                        <Label Content="卡开孔后失效时间(min)" HorizontalAlignment="Right" Margin="0,5,5,0" Visibility="{Binding ElementName=UsedGel, Path=IsChecked, Converter={StaticResource boolToVisConverter}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200" Value="{Binding t_Gel.LisGelClass, Mode=TwoWay}" MaxValue="100"/>
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200"/>
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200" Value="{Binding t_Gel.MaxInOne, Mode=TwoWay}"/>
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200" Value="{Binding t_Gel.KeepTime, Mode=TwoWay}"/>
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200" Value="{Binding t_Gel.Priority, Mode=TwoWay}"/>
+                        <ComboBox Margin="0,5,5,0" Width="200" HorizontalAlignment="Left"/>
+
+                        <UserCtrls:ToggleSwitch_Control Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Height="30" Width="100" x:Name="UsedGel" IsChecked="{Binding t_Gel.IsUsedGel , Mode=TwoWay}"/>
+                        <UserCtrls:ToggleSwitch_Control Grid.Column="1" HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Height="30" Width="100" x:Name="CrossMatching" IsChecked="{Binding t_Gel.IsCrossMatching , Mode=TwoWay}"/>
+                        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,5,5,0" VerticalAlignment="Top" Width="200" Visibility="{Binding ElementName=UsedGel, Path=IsChecked, Converter={StaticResource boolToVisConverter}}" Value="{Binding t_Gel.AfterKKTime, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <Label Content="注意：节约使用卡启用，并且【卡开孔后失效时间】不为0才会生效！" Grid.ColumnSpan="2" Margin="172,358,0,0" Style="{StaticResource labAlarm}"/>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource BottomToolBarBg}" >
+                        <Button Content="确定"  Margin="400,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Right" Command="{s:Action ClickOK}" CommandParameter="{Binding ElementName=dataGrid, Mode=OneWay}"/>
+                        <Button Content="取消"  Margin="400,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Command="{s:Action Close}"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

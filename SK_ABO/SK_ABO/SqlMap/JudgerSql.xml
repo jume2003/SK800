@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Judger" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_Result" type="SKABO.Common.Models.Judger.T_Result" />
+    <typeAlias alias="T_Picture" type="SKABO.Common.Models.Judger.T_Picture"/>
+    <typeAlias alias="ResultParameter" type="SKABO.Common.Parameters.Judger.ResultParameter" />
+  </alias>
+  <resultMaps>
+    <resultMap id="Result_Map_Result" class="T_Result">
+      <result property="ID" column="ID"/>
+      <result property="PictureID" column="PictureID"/>
+      <result property="GelID" column="GelID"/>
+      <result property="GelBarcode" column="GelBarcode"/>
+      <result property="SmpBarcode" column="SmpBarcode"/>
+      <result property="TubeStartNo" column="TubeStartNo"/>
+      <result property="TubeCount" column="TubeCount"/>
+      <result property="TubeNums" column="TubeNums"/>
+      <result property="StartTime" column="StartTime"/>
+      <result property="EndTime" column="EndTime"/>
+      <result property="Result" column="Result"/>
+      <result property="TestUser" column="TestUser"/>
+      <result property="EditUser" column="EditUser"/>
+      <result property="VerifyUser" column="VerifyUser"/>
+      <result property="ReportUser" column="ReportUser"/>
+      <result property="EditTime" column="EditTime"/>
+      <result property="VerifyTime" column="VerifyTime"/>
+      <result property="ReportTime" column="ReportTime"/>
+      <result property="LED" column="LED"/>
+      <result property="DonorBarcode" column="DonorBarcode"/>
+      <result property="Color" column="Color"/>
+      <result property="Remark" column="Remark"/>
+      <result property="Picture" column="PictureID" select="QueryPictureByGelId"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <statement id="QueryT_JudgeParamer" parameterClass="System.String" resultClass="SKABO.Common.Models.Judger.T_JudgeParamer" >
+      SELECT *
+      FROM T_JudgeParamer
+      WHERE MSN =  #value# order by AreaType,TNo
+    </statement>
+    <insert id="InsertT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+
+      INSERT INTO T_JudgeParamer ([MSN],[AreaType],[TNo],[StartX],[StartY],[EndX],[EndY]) VALUES
+      (#MSN#,#AreaType#,#TNo#,#StartX#,#StartY#,#EndX#,#EndY#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_JudgeParamer"  parameterClass="SKABO.Common.Models.Judger.T_JudgeParamer">
+
+      Update T_JudgeParamer set MSN=#MSN#,AreaType=#AreaType#,TNo=#TNo#,StartX=#StartX#,StartY=#StartY#,EndX=#EndX#,EndY=#EndY# where ID=#ID#
+    </update>
+
+    <select id="QueryT_Camera" parameterClass="System.String" resultClass="SKABO.Common.Models.Judger.T_Camera" >
+      SELECT *
+      FROM T_Camera
+      WHERE MSN =  #value# 
+    </select>
+    <insert id="InsertT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+
+      INSERT INTO T_Camera (MSN,ExposureTime,Gain,RB,GB,BB,Remark) VALUES
+      (#MSN#,#ExposureTime#,#Gain#,#RB#,#GB#,#BB#,#Remark#)
+      <selectKey resultClass="int" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <update id="UpdateT_Camera"  parameterClass="SKABO.Common.Models.Judger.T_Camera">
+
+      Update T_Camera set MSN=#MSN#,ExposureTime=#ExposureTime#,Gain=#Gain#,RB=#RB#,GB=#GB#,BB=#BB#,Remark=#Remark# where ID=#ID#
+    </update>
+    <insert id="InsertT_Result" parameterClass="T_Result">
+      insert into T_Result(PictureID,GelID,GelBarcode,SmpBarcode,TubeStartNo,TubeCount,TubeNums,StartTime,EndTime,Result,TestUser,EditUser,VerifyUser,ReportUser,LED,DonorBarcode,Color,Remark) values
+      (#PictureID#,#GelID#,#GelBarcode#,#SmpBarcode#,#TubeStartNo#,#TubeCount#,#TubeNums#,#StartTime#,#EndTime#,#Result#,#TestUser#,#EditUser#,#VerifyUser#,#ReportUser#,#LED#,#DonorBarcode#,#Color#,#Remark#)
+      <selectKey resultClass="int" type="post" property="ID">
+      select @@IDENTITY
+    </selectKey>
+    </insert>
+    <insert id="InsertT_Picture" parameterClass="T_Picture">
+      insert into T_Picture(RawFile,Tube1,Tube2,Tube3,Tube4,Tube5,Tube6,Tube7,Tube8,T1,T2,T3,T4,T5,T6,T7,T8,LED,MD5) values
+      (#RawFile#,#Tube1#,#Tube2#,#Tube3#,#Tube4#,#Tube5#,#Tube6#,#Tube7#,#Tube8#,#T1#,#T2#,#T3#,#T4#,#T5#,#T6#,#T7#,#T8#,#LED#,#MD5#)
+      <selectKey resultClass="int" type="post" property="ID">
+      select @@IDENTITY
+    </selectKey>
+    </insert>
+    <select id="QueryT_Result" parameterClass="ResultParameter" resultMap="Result_Map_Result">
+      SELECT * FROM T_Result
+      <dynamic prepend="where">
+      <isParameterPresent>
+        <isNotEmpty prepend="and" property="StartTime" >
+          EndTime &gt;= #StartTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="RealEndTime" >
+          EndTime &lt; #RealEndTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="GelBarcode" >
+          GelBarcode = #GelBarcode#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="SmpBarcode" >
+          SmpBarcode = #SmpBarcode#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="TestUser" >
+          TestUser = #TestUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="EditUser" >
+          EditUser = #EditUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="VerifyUser" >
+          VerifyUser = #VerifyUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="ReportUser" >
+          ReportUser = #ReportUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="DonorBarcode" >
+          DonorBarcode = #DonorBarcode#
+        </isNotEmpty>
+      <isNotNull prepend="and" property="GelID" >
+          GelID = #GelID#
+        </isNotNull>
+      </isParameterPresent>
+    </dynamic>
+    </select>
+    <select id="QueryPictureByGelId" parameterClass="long" resultClass="T_Picture">
+      SELECT *
+      FROM T_Picture
+      WHERE ID =  #value#
+    </select>
+  </statements>
+</sqlMap>

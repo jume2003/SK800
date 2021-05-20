@@ -1,0 +1,43 @@
+﻿<base:BJControl
+    xmlns:base="clr-namespace:SK_ABO.UserCtrls.Base"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local1="clr-namespace:SK_ABO.UserCtrls" x:Class="SK_ABO.UserCtrls.Centrifuge_Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="160" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Storyboard  RepeatBehavior="Forever"  x:Key="Centrifuge_Run_H" >
+            <DoubleAnimationUsingKeyFrames  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="centrifugeLeaf_Control">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-180"/>
+            </DoubleAnimationUsingKeyFrames>
+
+        </Storyboard>
+
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <!--BeginStoryboard Storyboard="{StaticResource Centrifuge_Run_H}"/-->
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid HorizontalAlignment="Left" Width="160">
+        <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="160" Margin="0,0,-160,-160" Stroke="Black" VerticalAlignment="Top" Width="160"/>
+        <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="80" Margin="40,40,-120,-120" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+
+        <local1:CentrifugeLeaf_Control x:Name="centrifugeLeaf_Control" HorizontalAlignment="Left" Height="140" Margin="10,10,0,0" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.5,0.5">
+            <local1:CentrifugeLeaf_Control.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local1:CentrifugeLeaf_Control.RenderTransform>
+        </local1:CentrifugeLeaf_Control>
+        <Label Content="低:0s" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="27" Margin="0,50,0,0" VerticalAlignment="Top" Width="73" Foreground="Blue" x:Name="LowSpeedTime"/>
+        <Label Content="高:0s" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="26" Margin="0,80,0,0" VerticalAlignment="Top" Width="73" Foreground="Blue" x:Name="HightSpeedTime"/>
+
+    </Grid>
+</base:BJControl>

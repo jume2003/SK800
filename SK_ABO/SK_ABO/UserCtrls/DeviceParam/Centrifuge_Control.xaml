@@ -1,0 +1,171 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls.DeviceParam"
+             xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" x:Name="emctroller" x:Class="SK_ABO.UserCtrls.DeviceParam.Centrifuge_Control"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance {x:Type local:Centrifuge_Control}}" d:DesignWidth="331.334" Height="741.667">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="2,5,0,0"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Margin" Value="2,5,5,0"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="2,5,5,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+        <Style x:Key="num_style" TargetType="{x:Type UserCtrls:NumericUpDown_Control}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Margin" Value="2,5,5,0"/>
+        </Style>
+    </UserControl.Resources>
+    <GroupBox Header="{Binding Header, ElementName=emctroller}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="466*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Grid.RowSpan="2">
+                <Label Content="项目"/>
+                <Label Content="初始化"/>
+
+                <Label Content="零点线圈"/>
+                <Label Content="起动线圈"/>
+                <Label Content="完成线圈"/>
+                <Label Content="初始化速度"/>
+                <Label Content="初始化位置"/>
+                <Label Content="速度"/>
+                <Label Content="位移量"/>
+                <Label Content="实际位置"/>
+                <Label Content="校正因子"/>
+                <Label Content="极限位置"/>
+                <Label Content="归零超时"/>
+                <Label Content="运动超时"/>
+                <Label Content="高速"/>
+                <Label Content="低速"/>
+                <Label Content="高速时间"/>
+                <Label Content="低速时间"/>
+                <Label Content="加高时间"/>
+                <Label Content="加低时间"/>
+                <Label Content="停止时间"/>
+                <Label Content="离心机代号"/>
+                <Label Content="运动停止"/>
+                <Label Content="始停步长"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="2">
+                <Label Content="地址"/>
+                <TextBox Text="{Binding Centrifuge.Motor.InitCoil.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.Zero.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.StartCoil.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.DoneCoil.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.InitSpeed.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.InitDistance.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.Speed.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.Distance.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.RealDistance.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Factor.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.Maximum.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.InitTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.DistanceTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.HightSpeed.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.LowSpeed.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.HightSpeedTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.LowSpeedTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.AddHSpeedTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.AddLSpeedTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.StopSpeedTime.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Code.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.StopCoil.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Centrifuge.Motor.StartAfter.Addr, ElementName=emctroller, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2">
+                <Label Content="设定值"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.InitCoil.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.Zero.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.StartCoil.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.DoneCoil.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.InitSpeed.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.InitDistance.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.Speed.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Distance.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.RealDistance.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.Factor.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                          Width="70" Height="25" Margin="2,5,5,0" Step="0.01"  MaxValue="9999999" Decimation="2"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.Maximum.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0"    Step="0.01"   MaxValue="9999999" Decimation="2"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.InitTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0"    Step="0.01"   MaxValue="9999999" Decimation="2"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.DistanceTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0"    Step="0.01"   MaxValue="9999999" Decimation="2"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.HightSpeed.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.LowSpeed.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.HightSpeedTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.LowSpeedTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.AddHSpeedTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.AddLSpeedTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.StopSpeedTime.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <TextBox IsEnabled="True" Text="{Binding Centrifuge.Code.SetValue, ElementName=emctroller, Mode=TwoWay}"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.StopCoil.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+                <UserCtrls:NumericUpDown_Control Value="{Binding Centrifuge.Motor.StartAfter.SetValue, ElementName=emctroller, Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="9999999"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="3" HorizontalAlignment="Left" Grid.RowSpan="2">
+                <Label Content="PLC值"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.InitCoil.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.Zero.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.StartCoil.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.DoneCoil.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.InitSpeed.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.InitDistance.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Speed.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Distance.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.RealDistance.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Factor.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.Maximum.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.InitTime.CurrentValue, ElementName=emctroller}"/>
+                <TextBox IsEnabled="False" Text="{Binding Centrifuge.Motor.DistanceTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.HightSpeed.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.LowSpeed.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.HightSpeedTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.LowSpeedTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.AddHSpeedTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.AddLSpeedTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.StopSpeedTime.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Code.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.StopCoil.CurrentValue, ElementName=emctroller}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding Centrifuge.Motor.StartAfter.CurrentValue, ElementName=emctroller}"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+</UserControl>

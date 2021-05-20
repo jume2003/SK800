@@ -1,0 +1,358 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.Device"
+      xmlns:s="https://github.com/canton7/Stylet"
+      xmlns:DeviceParam="clr-namespace:SK_ABO.UserCtrls.DeviceParam" x:Class="SK_ABO.Pages.Device.CommunicationSettingView"
+      xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+    mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      d:DataContext="{d:DesignInstance {x:Type local:CommunicationSettingViewModel}}"
+      Title="CommunicationSettingView">
+    <Page.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="2,5,0,0"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Margin" Value="2,5,5,0"/>
+        </Style>
+        <Style TargetType="{x:Type StackPanel}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="2,5,5,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="FontStyle" Value="Normal"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+    </Page.Resources>
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="PLC通讯设置" HorizontalAlignment="Left"  Margin="10,10,0,0" VerticalAlignment="Top" >
+                    <GroupBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="加载PLC值" Command="{s:Action LoadParam}"/>
+                            <Separator/>
+                            <MenuItem Header="更新设置到PLC" Command="{s:Action UpdateParam2PLC}"/>
+                            <Separator/>
+                            <MenuItem Header="保存设置" Command="{s:Action SaveParam}"/>
+                        </ContextMenu>
+                    </GroupBox.ContextMenu>
+                    <StackPanel>
+                        <StackPanel Margin="10,2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30">
+                            <Label Content="主IP地址："/>
+                            <TextBox Text="{Binding Param.IpAddress}" Width="100"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30">
+                            <Label Content="端       口："/>
+                            <TextBox Text="{Binding Param.Port}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30">
+                            <Label Content="辅IP地址："/>
+                            <TextBox Text="{Binding Param.SencondIpAddress}" Width="100"/>
+                        </StackPanel>
+                        <StackPanel Margin="10,2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30">
+                            <Label Content="端       口："/>
+                            <TextBox Text="{Binding Param.SecondPort}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="门开关">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="项目"/>
+                            <Label Content="门开关"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <Label Content="地址"/>
+                            <TextBox Text="{Binding Param.DoorCoil.Addr}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <Label Content="设定值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.DoorCoil.SetValue, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3">
+                            <Label Content="PLC值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.DoorCoil.CurrentValue, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="灯光、报警">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="项目"/>
+                            <Label Content="照明"/>
+                            <Label Content="相机前光"/>
+                            <Label Content="相机背光"/>
+                            <Label Content="抓手刹车"/>
+                            <Label Content="声音报警"/>
+                            <Label Content="灯光报警"/>
+                            <Label Content="PLC声音报警"/>
+                            <Label Content="PLC灯光报警"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <Label Content="地址"/>
+                            <TextBox Text="{Binding Param.LightCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.CameraLightCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.CameraFLightCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.HandStopCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.VoiceAlarmCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.LightAlarmCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.PLCVoiceAlarmCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.PLCVoiceAlarmCoil.Addr}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <Label Content="设定值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.LightCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.CameraLightCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.CameraFLightCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.HandStopCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.VoiceAlarmCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.LightAlarmCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PLCVoiceAlarmCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PLCLightAlarmCoil.SetValue, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3">
+                            <Label Content="PLC值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.LightCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.CameraLightCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.CameraFLightCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.HandStopCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.VoiceAlarmCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.LightAlarmCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PLCVoiceAlarmCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PLCLightAlarmCoil.CurrentValue, Mode=TwoWay}"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="系统">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="项目"/>
+                            <Label Content="开机线圈"/>
+                            <Label Content="自检线圈"/>
+                            <Label Content="暂停线圈"/>
+                            <Label Content="急停线圈"/>
+                            <Label Content="停止原因"/>
+                            <Label Content="系统错误"/>
+                            <Label Content="X防撞总行程"/>
+                            <Label Content="X防撞间隔"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <Label Content="地址"/>
+                            <TextBox Text="{Binding Param.StartSwitchCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.TestSelfSwitchCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.PauseCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.EmergencyStopCoil.Addr}"/>
+                            <TextBox Text="{Binding Param.StopCode.Addr}"/>
+                            <TextBox Text="{Binding Param.ErrorCode.Addr}"/>
+                            <TextBox Text="{Binding Param.AvoidanceTotal.Addr}"  IsEnabled="False"/>
+                            <TextBox Text="{Binding Param.AvoidanceSpace.Addr}"  IsEnabled="False"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <Label Content="设定值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.StartSwitchCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.TestSelfSwitchCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PauseCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.EmergencyStopCoil.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.StopCode.SetValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.ErrorCode.SetValue, Mode=TwoWay}"/>
+                            <TextBox Text="{Binding Param.AvoidanceTotal.SetValue}"/>
+                            <TextBox Text="{Binding Param.AvoidanceSpace.SetValue}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3">
+                            <Label Content="PLC值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.StartSwitchCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.TestSelfSwitchCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.PauseCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.EmergencyStopCoil.CurrentValue, Mode=TwoWay}"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding Param.StopCode.CurrentValue, Mode=TwoWay}"/>
+                            <TextBox Text="{Binding Param.ErrorCode.CurrentValue}" IsEnabled="False"/>
+                            <TextBox Text="{Binding Param.AvoidanceTotal.CurrentValue}" IsEnabled="False"/>
+                            <TextBox Text="{Binding Param.AvoidanceSpace.CurrentValue}" IsEnabled="False"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="卡仓">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="项目"/>
+                            <Label Content="卡仓门"/>
+                            <Label Content="第一光栅"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <Label Content="地址"/>
+                            <TextBox Text="{Binding GelWare.DoorCoil.Addr}"/>
+                            <TextBox Text="{Binding GelWare.FirstCoil.Addr}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <Label Content="数量"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding GelWare.DoorCoil.SetValue, Mode=TwoWay}"/>
+                            <UserCtrls:NumericUpDown_Control Value="{Binding GelWare.FirstCoil.SetValue,  Mode=TwoWay}" 
+                            Width="70" Height="25" Margin="2,5,5,0" Step="1"        MaxValue="50" ValueChanged="{s:Action GuangSan_ValueChanged}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3">
+                            <Label Content="PLC值"/>
+                            <CheckBox IsEnabled="False" IsChecked="{Binding GelWare.DoorCoil.CurrentValue,  Mode=TwoWay}"/>
+                        </StackPanel>
+                        <WrapPanel x:Name="checkBoxPanel" Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" >
+                            
+                        </WrapPanel>
+                        <DeviceParam:Electromotor_Control Header="卡仓电机" Motor="{Binding Path=GelWare.XMotor}" Grid.Row="2" Grid.ColumnSpan="4" />
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1" x:Name="CouveusePanel">
+                <DeviceParam:Mixermotor_Control Header="混匀器" Motor="{Binding CouMixer.Mixer,Mode=TwoWay}"/>
+                <GroupBox Header="样本载架">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical" x:Name="SS_Lab_panel">
+                            <Label Content="项目"/>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" x:Name="SS_Addr_panel">
+                            <Label Content="地址"/>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2" x:Name="SS_Set_panel">
+                            <Label Content="设定值"/>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3" x:Name="SS_Current_panel">
+                            <Label Content="PLC值"/>
+                            
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <DeviceParam:Electromotor_Control Header="样本扫描电机" Motor="{Binding Param.ScanMotor,Mode=TwoWay}"/>
+                <GroupBox Header="破孔器">
+                    
+                    <StackPanel Orientation="Vertical">
+                        <DeviceParam:Electromotor_Control Header="运动电机" Motor="{Binding Piercer.YMotor}"/>
+                        <DeviceParam:Electromotor_Control Header="破孔电机" Motor="{Binding Piercer.ZMotor}"/>
+                    </StackPanel>
+                </GroupBox>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="2">
+                <GroupBox Header="机械手">
+                    <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="项目"/>
+                                <Label Content="卡探测"/>
+                                <Label Content="夹手复位"/>
+                                <Label Content="夹手控制"/>
+                                <Label Content="夹手完成"/>
+                                <Label Content="夹手启动"/>
+                                <Label Content="归零超时"/>
+                                <Label Content="运动超时"/>
+                                <Label Content="始停步长"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Grid.Column="1">
+                            <Label Content="地址"/>
+                                <TextBox Text="{Binding Hand.ExistCoil.Addr}"/>
+                                <TextBox Text="{Binding Hand.HandInitCoil.Addr}"/>
+                                <TextBox Text="{Binding Hand.HandCoil.Addr}"/>
+                                <TextBox Text="{Binding Hand.HandDonedCoil.Addr}"/>
+                                <TextBox Text="{Binding Hand.HandStartCoil.Addr}"/>
+                                <TextBox Text="{Binding Hand.InitTime.Addr}"/>
+                                <TextBox Text="{Binding Hand.DistanceTime.Addr}"/>
+                                <TextBox Text="{Binding Hand.HandStartAfter.Addr}"/>
+                            
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <Label Content="设定值"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.ExistCoil.SetValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandInitCoil.SetValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandCoil.SetValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandDonedCoil.SetValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandStartCoil.SetValue, Mode=TwoWay}"/>
+                                <TextBox Text="{Binding Hand.InitTime.SetValue}"/>
+                                <TextBox Text="{Binding Hand.DistanceTime.SetValue}"/>
+                                <TextBox Text="{Binding Hand.HandStartAfter.SetValue}"/>
+                            </StackPanel>
+                        <StackPanel Orientation="Vertical" Grid.Column="3">
+                            <Label Content="PLC值"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.ExistCoil.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandInitCoil.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandCoil.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandDonedCoil.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandStartCoil.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.InitTime.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.DistanceTime.CurrentValue, Mode=TwoWay}"/>
+                                <CheckBox IsEnabled="False" IsChecked="{Binding Hand.HandStartAfter.CurrentValue, Mode=TwoWay}"/>
+                            </StackPanel>
+                    </Grid>
+                        <DeviceParam:Electromotor_Control Header="机械手X轴" Motor="{Binding Hand.XMotor,Mode=TwoWay}"/>
+                        <DeviceParam:Electromotor_Control Header="机械手Y轴" Motor="{Binding Hand.YMotor,Mode=TwoWay}"/>
+                        <DeviceParam:DoubleSpeedMotor_control Header="机械手Z轴" Motor="{Binding Hand.ZMotor,Mode=TwoWay}"/>
+                    </StackPanel>
+                </GroupBox>
+                <!---<DeviceParam:Centrifuge_plc_Control Header="1#离心机" Cent="{Binding CentSys.Centrifuges[0]}" />
+                <DeviceParam:Centrifuge_plc_Control Header="2#离心机" Cent="{Binding CentSys.Centrifuges[1]}"/> -->
+
+                <DeviceParam:Centrifuge_Control Header="1#离心机" Centrifuge="{Binding Centrifuge.Centrifuges[0],Mode=TwoWay}"/>
+                <DeviceParam:Centrifuge_Control Header="2#离心机" Centrifuge="{Binding Centrifuge.Centrifuges[1],Mode=TwoWay}"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Config" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="SysConfig" type="SKABO.Common.Models.Config.SysConfig" />
+    </alias>
+  <resultMaps>
+    <resultMap id="SysConfig_Map" class="SysConfig">
+      <result property="SnKey" column="sn_key"/>
+      <result property="SnValue" column="sn_value"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <select id="QuerySysConfig" parameterClass="System.String" resultMap="SysConfig_Map" >
+      SELECT sn_key,sn_value FROM sys_config where sn_key=#value#
+    </select>
+    <update id="UpdateSysConfig" parameterClass="SysConfig">
+      update sys_config set sn_value=#SnValue# where sn_key=#SnKey#
+    </update>
+  </statements>
+</sqlMap>

@@ -1,0 +1,32 @@
+﻿<Window x:Class="SK_ABO.Views.Device.ShowDeepPlateView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.Device"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance {x:Type local:ShowDeepPlateViewModel}}"
+        Background="{StaticResource MainBg}"
+        Title="ShowDeepPlateView" Height="800" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel x:Name="MainPanel">
+                
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Grid.Row="1" Background="{StaticResource BottomToolBarBg}">
+            <ContentControl HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource AwesomeButton}" Content="确 定" Tag="&#xf0c7;" Width="120" Height="40" Margin="5,5" Command="{s:Action Save}"/>
+                    <Button Style="{StaticResource AwesomeButton}" Content="关 闭" Tag="&#xf410;" Width="120" Height="40" Margin="5,5" Command="{s:Action Close}"/>
+                </StackPanel>
+            </ContentControl>
+        </Grid>
+    </Grid>
+</Window>
+

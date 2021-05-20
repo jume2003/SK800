@@ -1,0 +1,21 @@
+﻿<base:BJControl
+    xmlns:base="clr-namespace:SK_ABO.UserCtrls.Base" x:Name="TipDishControl" x:Class="SK_ABO.UserCtrls.TipDish_Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="160" Background="Black" Loaded="TipDishControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="docCanvas" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch"/>
+        <Grid Grid.Row="1" Background="Gray">
+        <TextBlock Text="{Binding TipName, ElementName=TipDishControl, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0"  VerticalAlignment="Top" Width="50" FontSize="9"/>
+        </Grid>
+
+    </Grid>
+</base:BJControl>

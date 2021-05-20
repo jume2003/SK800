@@ -1,0 +1,50 @@
+﻿<Window x:Class="SK_ABO.Views.Device.DeviceConsoleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.Device"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:DeviceConsoleViewModel}"
+        Title="DeviceConsoleView" Height="856.85" Width="1002" KeyDown="{s:Action Window_KeyDown}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Stretch"  Margin="0,0,0,0" VerticalAlignment="Stretch" TabStripPlacement="Top">
+            <TabItem Header="通讯设置">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="-3"/>
+            </TabItem>
+            <TabItem Header="通道参数">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="-1"/>
+            </TabItem>
+            <TabItem Header="加样器" IsSelected="True">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="1"/>
+            </TabItem>
+
+            <TabItem Header="机械手">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="2"/>
+            </TabItem>
+            <TabItem Header="离心机">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="3"/>
+            </TabItem>
+            <TabItem Header="混匀器/孵育器">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="4"/>
+            </TabItem>
+            <TabItem Header="打孔器">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="5"/>
+            </TabItem>
+            <TabItem Header="条码测试">
+                <Frame  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tag="6"/>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="2" Background="{DynamicResource BottomToolBarBg}" >
+
+            <Button Content="查看部件坐标"  Margin="10,10,140,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Left" Width="160" Command="{s:Action ShowBJ}"/>
+            <Button Content="任务管理"  Margin="206,10,0,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF00C;" Height="40" HorizontalAlignment="Left" Width="160" Command="{s:Action ShowTaskManager}"/>
+            <Button Content="关闭"  Margin="0,10,10,0"  Style="{StaticResource AwesomeButton}" Tag="&#xF410;" Height="40" HorizontalAlignment="Right" Command="{s:Action Close}"/>
+        </Grid>
+    </Grid>
+</Window>

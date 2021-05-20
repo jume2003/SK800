@@ -1,0 +1,42 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SKABO.Judger.Win"
+        xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" x:Class="SKABO.Judger.Win.DaHengAdjustWin" WindowStartupLocation="CenterScreen"
+    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="相机实时调参" Height="500" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="1" Header="参数设置"  Margin="0,0,0,0" VerticalAlignment="Stretch" >
+            <Grid Background="#FFE5E5E5">
+                <Label Content="曝光时间：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" x:Name="Lab_ExposureTime"/>
+                <Label Content="增益值：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,70,0,0" x:Name="Lab_Gain"/>
+                <Label Content="白平衡(红)：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,140,0,0" x:Name="Lab_RB"/>
+                <Label Content="白平衡(绿)：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,210,0,0" x:Name="Lab_GB"/>
+                <Label Content="白平衡(蓝)：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,280,0,0" x:Name="Lab_BB"/>
+                <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Height="23" Margin="45,30,0,0" VerticalAlignment="Top" Width="138" x:Name="NumUD_ExposureTime" Tag="Time" ValueChanged="NumUD_BB_ValueChanged"/>
+                <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Height="23" Margin="45,100,0,0" VerticalAlignment="Top" Width="138" x:Name="NumUD_Plus" Step="1" Tag="Gain" ValueChanged="NumUD_BB_ValueChanged"/>
+                <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Height="23" Margin="45,170,0,0" VerticalAlignment="Top" Width="138" x:Name="NumUD_RB" Step="0.01" Decimation="2" Tag="R" ValueChanged="NumUD_BB_ValueChanged"/>
+                <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Height="23" Margin="45,240,0,0" VerticalAlignment="Top" Width="138" x:Name="NumUD_GB" Step="0.01" Decimation="2" Tag="G" ValueChanged="NumUD_BB_ValueChanged"/>
+                <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Height="23" Margin="45,310,0,0" VerticalAlignment="Top" Width="138" x:Name="NumUD_BB" Step="0.01" Decimation="2" Tag="B" ValueChanged="NumUD_BB_ValueChanged"/>
+
+                <Button Content="自动白平衡" HorizontalAlignment="Left" Height="30" Margin="10,360,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="Button_Click"/>
+                <Button Content="保存" HorizontalAlignment="Left" Height="30" Margin="110,360,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" x:Name="Btn_Save" Click="Btn_Save_Click"/>
+
+            </Grid>
+        </GroupBox>
+        <Image HorizontalAlignment="Stretch"  Margin="0,0,0,0" VerticalAlignment="Stretch" x:Name="TargetImg" ></Image>
+
+        <!--
+        <WindowsFormsHost HorizontalAlignment="Stretch"  Margin="0,0,0,0" VerticalAlignment="Stretch" >
+            <wf:PictureBox x:Name="RealPlayWnd"></wf:PictureBox>
+        </WindowsFormsHost>
+-->
+    </Grid>
+</Window>

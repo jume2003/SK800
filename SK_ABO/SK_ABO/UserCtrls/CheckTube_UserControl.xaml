@@ -1,0 +1,45 @@
+﻿<UserControl x:Name="userControl" x:Class="SK_ABO.UserCtrls.CheckTube_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             mc:Ignorable="d" 
+             d:DesignHeight="91" d:DesignWidth="738" FontSize="14" Loaded="userControl_Loaded">
+    <UserControl.Resources>
+        <local:ChkHeightConverter x:Key="chkHeightConverter"/>
+        <Style x:Key="myChk" TargetType="CheckBox">
+            <Setter Property="FontSize"  Value="{Binding FontSize, ElementName=userControl}"/>
+            <Setter Property="FontWeight"  Value="{Binding FontWeight, ElementName=userControl}"/>
+            <Setter Property="FontFamily"  Value="{Binding FontFamily, ElementName=userControl}"/>
+            <Setter Property="Foreground"  Value="{Binding Foreground, ElementName=userControl}"/>
+            <Setter Property="HorizontalContentAlignment"  Value="Center"/>
+            <Setter Property="HorizontalAlignment"  Value="Center"/>
+            <Setter Property="Margin"  Value="0,0,0,0"/> 
+            <Setter Property="Height"  Value="{Binding Height, ElementName=userControl}"/>
+            <Setter Property="Width"  Value="{Binding Width, ElementName=userControl , Converter={StaticResource chkHeightConverter}, ConverterParameter=8}" />
+        </Style>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <CheckBox x:Name="Chk1" Content="1" Click="Chk1_Click"  Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk2" Content="2" Grid.Column="1" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk3" Content="3" Grid.Column="2" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk4" Content="4" Grid.Column="3" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk5" Content="5" Grid.Column="4" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk6" Content="6" Grid.Column="5" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk7" Content="7" Grid.Column="6" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+        <CheckBox x:Name="Chk8" Content="8" Grid.Column="7" Click="Chk1_Click" Style="{StaticResource myChk}"/>
+
+    </Grid>
+</UserControl>

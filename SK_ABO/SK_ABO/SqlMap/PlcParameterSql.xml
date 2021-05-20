@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Communication" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_PlcParameter" type="SKABO.Common.Models.Communication.T_PlcParameter" />
+  </alias>
+  <resultMaps>
+
+  </resultMaps>
+  <statements>
+    <insert id="SavePLCParameter" parameterClass="T_PlcParameter" >
+      insert into plc_parameter(key_id,json_val,create_at,update_at) values(
+      #KeyId#,#JsonVal#,#AddedAt#,#UpdateAt#)
+    </insert>
+  </statements>
+</sqlMap>

@@ -1,0 +1,17 @@
+﻿<UserControl x:Name="tipCount" x:Class="SK_ABO.UserCtrls.TipCount_Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="95">
+    <Grid>
+        <Canvas>
+            <Ellipse Width="30" Height="30" Stroke="red"/>
+            <Path Data="M 0,0 L 5,0 L 5,2 L0,2z" Stroke="Blue" Canvas.Left="12.5" Canvas.Top="8"/>
+            <Path Data="M 1,2 L 1,15 L 2.5,17 L4,15 L4,2 z" Stroke="red" Canvas.Left="12.5" Canvas.Top="8"/>
+            <TextBlock Background="#808080" Foreground="#FF08F308" Width="60" Height="30" Canvas.Left="35" x:Name="CountLab" FontSize="24" TextAlignment="Center" Text="0000"/>
+        </Canvas>
+    </Grid>
+</UserControl>

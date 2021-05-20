@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+  <Phrases>
+    <Phrase>
+      <value>新生儿，</value>
+    </Phrase>
+    <Phrase>
+      <value>待查，</value></Phrase>
+    <Phrase>
+      <value>待确认，</value></Phrase>
+    <Phrase>
+      <value>已检查，</value></Phrase>
+    <Phrase>
+      <value>不确定，</value></Phrase>
+    <Phrase>
+      <value>溶血，</value></Phrase>
+  </Phrases>

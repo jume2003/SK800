@@ -1,0 +1,30 @@
+﻿<Window x:Class="SK_ABO.Views.CanDebug.PcbDebug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.CanDebug"
+        mc:Ignorable="d"
+        Title="PcbDebug" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Can地址" HorizontalAlignment="Right" Margin="5,5,0,0" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="功能码" Grid.Row="1" HorizontalAlignment="Right" Margin="5,5,0,0" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,19,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem >0x01读线圈</ComboBoxItem>
+            <ComboBoxItem >0x05写单个线圈</ComboBoxItem>
+            <ComboBoxItem >0x0F写多个线圈</ComboBoxItem>
+            <ComboBoxItem >0x06写双寄存器（32位）</ComboBoxItem>
+            <ComboBoxItem >0x03读双寄存器（32位）</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</Window>

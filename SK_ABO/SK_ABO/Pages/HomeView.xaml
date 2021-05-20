@@ -1,0 +1,106 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages"
+      xmlns:s="https://github.com/canton7/Stylet"
+        xmlns:UserCtrls="clr-namespace:SK_ABO.UserCtrls" xmlns:UserCtrls1="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" 
+    
+    xmlns:custom="clr-namespace:DrapControlLibrary;assembly=DrapControlLibrary"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+    x:Class="SK_ABO.Pages.HomeView"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="HomeView"
+        d:DataContext="{d:DesignInstance {x:Type local:HomeViewModel}}">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource AwesomeButton}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5,5,0,5"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="Switch">
+            <Setter Property="FontFamily" Value="Font Awesome 5 Free Solid"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Blue"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" >
+                <Button Content="开机" Tag="&#xF04B;" Command="{s:Action Start}"/>
+                <!--<Button Content="关机" Tag="&#xF011;"  Command="{s:Action Stop}"/>-->
+                <Button Content="暂停" Tag="&#xF04C;" Command="{s:Action Pause}"/>
+                <Button Content="试剂扫码" Tag="&#xF02A;" Command="{s:Action ScanAgent}"/>
+                <Button Content="双工通信" Tag="&#xF362;" Command="{s:Action DoDouble}"/>
+                <Button Content="无双常规血型" Tag="&#xF061;" Width="150" Command="{s:Action NoDoubleBooldNormal}"/>
+                <!--<Button Content="无双交叉配血" Tag="&#xF061;" Width="150" Command="{s:Action NoDoubleBooldCorss}"/>-->
+            </StackPanel>
+        </Grid>
+        <Canvas x:Name="MainCanvas" Grid.Row="1">
+            <Canvas.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="开始调整布局"  Command="{s:Action StartAdjust}"/>
+                    <MenuItem Header="结束保存布局" Command="{s:Action EndAdjust}"/>
+                    <MenuItem Header="删除布局文件" Command="{s:Action DeleteAdjust}"/>
+                </ContextMenu>
+            </Canvas.ContextMenu>
+
+            <UserCtrls1:ToggleSwitch_Control ToolTip="照明开关" Canvas.Left="157" Canvas.Top="82" Width="96" Height="36" CanOpen="{Binding CanStartAdjust}" Checked="{s:Action switchLight}" UnChecked="{s:Action switchLight}"  Tag="light">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </UserCtrls1:ToggleSwitch_Control>
+            <UserCtrls1:ToggleSwitch_Control x:Name="switch_2" ToolTip="拍照背光开关" Canvas.Left="321" Canvas.Top="82" Width="96" Height="36" CanOpen="{Binding CanStartAdjust}" Checked="{s:Action switchLight}" UnChecked="{s:Action switchLight}">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </UserCtrls1:ToggleSwitch_Control>
+            <UserCtrls:TipCount_Control Height="30" Canvas.Left="33" Canvas.Top="34" Width="95" x:Name="tipCount" Count="{Binding TipCount}" MouseDoubleClick="{s:Action CleanCount}" >
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </UserCtrls:TipCount_Control>
+            <UserCtrls:GelCount_Control Height="30" Canvas.Left="157" Canvas.Top="36" Width="95" x:Name="gelCount" Count="{Binding GelCount}" MouseDoubleClick="{s:Action CleanCount}">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </UserCtrls:GelCount_Control>
+            <Button Content="&#xF044;" Style="{StaticResource Switch}" Canvas.Left="19" Canvas.Top="134" ToolTip="编辑深孔板"  x:Name="btnEidtDeepPlate" Command="{s:Action EidtDeepplate}">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </Button>
+            <Button Content="&#xF49E;" Style="{StaticResource Switch}" Canvas.Left="131" Canvas.Top="134" ToolTip="打开卡仓" Command="{s:Action OpenGelWarehouse}" x:Name="btnOpenWarehouse">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </Button>
+            <Button Content="&#xF1F6;" Style="{StaticResource Switch}" Canvas.Left="213" Canvas.Top="134" ToolTip="关闭报警" Command="{s:Action CloseAlarm}" x:Name="btnCloseAlarm">
+                <i:Interaction.Behaviors>
+                    <custom:DragInCanvasBehavior/>
+                </i:Interaction.Behaviors>
+            </Button>
+        </Canvas>
+        <Popup AllowsTransparency="True" Opacity="0" Placement="Bottom" PlacementTarget="{Binding ElementName=tipCount}" IsOpen="{Binding ShowWarnTipCount}" x:Name="tipPopup">
+            <Grid>
+                <ed:Callout Margin="10,50,0,0" AnchorPoint="0.273,-0.747" CalloutStyle="Cloud" Content="要清理废针桶了" Fill="#FFF4F4F5" FontSize="20"  Height="60" Stroke="Black" Width="200" Foreground="#FFDC25D4"/>
+                <Button Padding="0"  Content="&#xf410;" Style="{StaticResource Switch}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{s:Action ClosePopup}" CommandParameter="Tip" Height="20" Width="20"/>
+            </Grid>
+        </Popup>
+        <Popup AllowsTransparency="True" Opacity="0" Placement="Bottom" PlacementTarget="{Binding ElementName=gelCount}" IsOpen="{Binding ShowWarnGelCount}" x:Name="gelTpopup">
+            <Grid>
+                <ed:Callout Margin="10,50,0,0" AnchorPoint="0.273,-0.747" CalloutStyle="Cloud" Content="要清理废卡桶了" Fill="#FFF4F4F5" FontSize="20"  Height="60" Stroke="Black" Width="200" Foreground="#FFDC25D4"/>
+                <Button Padding="0"  Content="&#xf410;" Style="{StaticResource Switch}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{s:Action ClosePopup}"  CommandParameter="Gel" Height="20" Width="20"/>
+            </Grid>
+        </Popup>
+    </Grid>
+</Page>

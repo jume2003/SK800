@@ -1,0 +1,23 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.SetStep"
+      xmlns:s="https://github.com/canton7/Stylet"
+        xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" x:Class="SK_ABO.Pages.SetStep.YSView"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+        d:DataContext="{d:DesignInstance {x:Type local:YSViewModel}}"
+      Title="YSView" s:View.ActionTarget="{Binding }" >
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="延时(ms)：" HorizontalAlignment="Right" Margin="0,60,0,0" VerticalAlignment="Top"/>
+
+        <UserCtrls:NumericUpDown_Control x:Name="NumYSTime" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="0,60,0,0" VerticalAlignment="Top" Width="131" Tag="YSParam.YsTime" Value="{Binding YSParam.YsTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxValue="5000"/>
+    </Grid>
+</Page>

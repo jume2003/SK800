@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Judger" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_Result" type="SKABO.Common.Models.Judger.T_Result" />
+    <typeAlias alias="T_Picture" type="SKABO.Common.Models.Judger.T_Picture"/>
+    <typeAlias alias="ResultParameter" type="SKABO.Common.Parameters.Judger.ResultParameter" />
+  </alias>
+  <resultMaps>
+    <resultMap id="T_Picture_Map" class="T_Picture">
+      <result property="ID" column="ID"/>
+      <result property="RawFile" column="Raw_File"/>
+      <result property="Tube1" column="Tube1"/>
+      <result property="Tube2" column="Tube2"/>
+      <result property="Tube3" column="Tube3"/>
+      <result property="Tube4" column="Tube4"/>
+      <result property="Tube5" column="Tube5"/>
+      <result property="Tube6" column="Tube6"/>
+      <result property="Tube7" column="Tube7"/>
+      <result property="Tube8" column="Tube8"/>
+      <result property="T1" column="T1"/>
+      <result property="T2" column="T2"/>
+      <result property="T3" column="T3"/>
+      <result property="T4" column="T4"/>
+      <result property="T5" column="T5"/>
+      <result property="T6" column="T6"/>
+      <result property="T7" column="T7"/>
+      <result property="T8" column="T8"/>
+      <result property="LED" column="LED"/>
+      <result property="MD5" column="MD5"/>
+    </resultMap>
+    <resultMap id="Result_Map_Result" class="T_Result">
+      <result property="ID" column="ID"/>
+      <result property="PictureID" column="Picture_ID"/>
+      <result property="GelID" column="Gel_ID"/>
+      <result property="GelBarcode" column="Gel_Barcode"/>
+      <result property="SmpBarcode" column="Smp_Barcode"/>
+      <result property="TubeStartNo" column="Tube_Start_No"/>
+      <result property="TubeCount" column="Tube_Count"/>
+      <result property="TubeNums" column="Tube_Nums"/>
+      <result property="StartTime" column="Start_Time"/>
+      <result property="EndTime" column="End_Time"/>
+      <result property="Result" column="Result"/>
+      <result property="TestUser" column="Test_User"/>
+      <result property="EditUser" column="Edit_User"/>
+      <result property="VerifyUser" column="Verify_User"/>
+      <result property="ReportUser" column="Report_User"/>
+      <result property="EditTime" column="Edit_Time"/>
+      <result property="VerifyTime" column="Verify_Time"/>
+      <result property="ReportTime" column="Report_Time"/>
+      <result property="LED" column="LED"/>
+      <result property="RackIndex" column="Rack_Index"/>
+      <result property="Outed" column="Outed"/>
+      <result property="DonorBarcode" column="Donor_Barcode"/>
+      <result property="Color" column="Color"/>
+      <result property="Remark" column="Remark"/>
+      <result property="IsQC" column="is_qc"/>
+      <result property="IsManJudger" column="is_man_judger"/>
+      <result property="GelName" column="Gel_Name"/>
+      <result property="TestName" column="Test_Name"/>
+      <result property="Picture" column="Picture_ID" select="QueryPictureByGelId"/>
+    </resultMap>
+    
+  </resultMaps>
+  <statements>
+    <insert id="InsertT_Result" parameterClass="T_Result">
+      insert into Result(id,Picture_ID,Gel_ID,Gel_Barcode,Smp_Barcode,Tube_Start_No,Tube_Count,Tube_Nums,Start_Time,End_Time,Result,Test_User,Edit_User,
+      Verify_User,Report_User,LED,Rack_Index,Outed,Donor_Barcode,Color,is_qc,is_man_judger,Remark) values
+      (#ID#,#PictureID#,#GelID#,#GelBarcode#,#SmpBarcode#,#TubeStartNo#,#TubeCount#,#TubeNums#,#StartTime#,#EndTime#,#Result#,
+      #TestUser#,#EditUser#,#VerifyUser#,#ReportUser#,#LED#,
+      #RackIndex#,#Outed#,
+      #DonorBarcode#,#Color#,#IsQC#,#IsManJudger#,#Remark#)
+      <selectKey resultClass="long" type="pre" property="ID">
+        select nextval('result_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <insert id="InsertT_Picture" parameterClass="T_Picture">
+      insert into Picture(id,Raw_File,Tube1,Tube2,Tube3,Tube4,Tube5,Tube6,Tube7,Tube8,T1,T2,T3,T4,T5,T6,T7,T8,LED,MD5) values
+      (#ID#,#RawFile#,#Tube1#,#Tube2#,#Tube3#,#Tube4#,#Tube5#,#Tube6#,#Tube7#,#Tube8#,#T1#,#T2#,#T3#,#T4#,#T5#,#T6#,#T7#,#T8#,#LED#,#MD5#)
+      <selectKey resultClass="long" type="pre" property="ID">
+        select nextval('picture_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <select id="QueryT_Result" parameterClass="ResultParameter" resultMap="Result_Map_Result">
+      SELECT r.*,g.gel_name,g.test_name FROM Result r left join gel g on (r.Gel_ID=g.id)
+      <dynamic prepend="where">
+      <isParameterPresent>
+        <isNotEmpty prepend="and" property="StartTime" >
+          End_Time &gt;= #StartTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="RealEndTime" >
+          End_Time &lt; #RealEndTime#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="GelBarcode" >
+          Gel_Barcode = #GelBarcode#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="SmpBarcode" >
+          Smp_Barcode = #SmpBarcode#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="TestUser" >
+          Test_User = #TestUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="EditUser" >
+          Edit_User = #EditUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="VerifyUser" >
+          Verify_User = #VerifyUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="ReportUser" >
+          Report_User = #ReportUser#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="DonorBarcode" >
+          Donor_Barcode = #DonorBarcode#
+        </isNotEmpty>
+      <isNotNull prepend="and" property="GelID" >
+          Gel_ID = #GelID#
+        </isNotNull>
+      </isParameterPresent>
+    </dynamic>
+    </select>
+    <select id="QueryPictureByGelId" parameterClass="long" resultMap="T_Picture_Map">
+      SELECT *
+      FROM Picture
+      WHERE ID =  #value#
+    </select>
+    <update id="UpdateT_Picture" parameterClass="T_Picture">
+      update Picture set T1=#T1#,T2=#T2#,T3=#T3#,T4=#T4#,T5=#T5#,T6=#T6#,T7=#T7#,T8=#T8#
+      where id=#ID#
+    </update>
+    <update id="UpdateT_Result" parameterClass="T_Result">
+      update Result set Color=#Color#,is_man_judger=#IsManJudger#,Result=#Result#,
+      Edit_User=#EditUser#,edit_time=#EditTime#,Verify_User=#VerifyUser#,Verify_time=#VerifyTime#,
+      Report_User=#ReportUser#,Report_time=#ReportTime#,
+      Remark=#Remark#
+      where id=#ID#
+    </update>
+  </statements>
+</sqlMap>

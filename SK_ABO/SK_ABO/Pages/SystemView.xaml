@@ -1,0 +1,38 @@
+﻿<Page x:Class="SK_ABO.Pages.SystemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+      Title="SystemView"
+      xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:SystemViewModel}"
+             s:View.ActionTarget="{Binding}"
+      >
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource AwesomeButton}">
+            <Setter Property="Margin" Value="70,20"/>
+        </Style>
+    </Page.Resources>
+    <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="800">
+        <Button Content="用户管理"    Tag="&#xF0C0;" Command="{s:Action UserManage}"  >
+
+        </Button>
+        <Button Content="修改密码"    Tag="&#xF084;" Command="{s:Action ChangePWD}"/>
+        <Button Content="日志管理"    Tag="&#xF481;" Command="{s:Action TraceManage}"/>
+        <Button Content="注销/登录"   Tag="&#xF007;" Command="{s:Action Logout}" CommandParameter="{Binding Mode=OneWay, RelativeSource={RelativeSource Self}}"/>
+        <Button Content="字典管理"    Tag="&#xF3FA;"/>
+        <Button Content="任务管理"   Tag="&#xF0CE;" Command="{s:Action TaskManagement}"/>
+        <Button Content="统计分析"    Tag="&#xF486;"  Command="{s:Action ShowStatisticAnalysis}"/>
+        <Button Content="关于..."    Tag="&#xF1FA;" Command="{s:Action ShowAbout}" />
+        <Button Content="部件控制台"   Tag="&#xF108;" Command="{s:Action ShowDevceConsole}"/>
+        <Button Content="部件参数"   Tag="&#xF013;" Command="{s:Action ShowBjParamter}"/>
+        <Button Content="质控图"    Tag="&#xF468;" Command="{s:Action ShowQcEtc}"/>
+        <Button Content="实验监测"   Tag="&#xF46A;" Command="{s:Action ExperManagement}"/>
+        <Button Content="系统设置"  Tag="&#xF085;" Command="{s:Action ShowSysConfig}"/>
+        <Button Content="逻辑编程"   Tag="&#xF303;" Command="{s:Action LogicManage}"/>
+        <Button Content="血型卡"  Tag="&#xF493;" Command="{s:Action ShowGelCardWin}"/>
+    </WrapPanel>
+</Page>

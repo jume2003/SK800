@@ -1,0 +1,70 @@
+﻿<Page x:Class="SK_ABO.Pages.Device.MachineHandView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.Device"
+      xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" 
+      mc:Ignorable="d" 
+      xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:MachineHandViewModel}"
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="MachineHandView">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+        </Style>
+    </Page.Resources>
+    <StackPanel>
+        <StackPanel Margin="10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50">
+            <Button Content="初始化X" Command="{s:Action InitX}"/>
+            <Button Content="移动X" Command="{s:Action MoveX}"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceX,Mode=TwoWay}"/>
+            <Label Content="点动步长" Margin="30,10,0,10" Height="30"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" Decimation="2" Step="0.01" MaxValue="100" Value="{Binding StepXValue,Mode=TwoWay}"/>
+            <Button Content="+" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="X+"/>
+            <Button Content="-" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="X-"/>
+        </StackPanel>
+        <StackPanel Margin="10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50">
+            <Button Content="初始化Y" Command="{s:Action InitY}"/>
+            <Button Content="移动Y" Command="{s:Action MoveY}"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceY,Mode=TwoWay}"/>
+            <Label Content="点动步长" Margin="30,10,0,10" Height="30"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" Decimation="2" Step="0.01" MaxValue="100" Value="{Binding StepYValue,Mode=TwoWay}"/>
+            <Button Content="+" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="Y+"/>
+            <Button Content="-" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="Y-"/>
+        </StackPanel>
+        <StackPanel Margin="10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50">
+            <Button Content="初始化Z" Command="{s:Action InitZ}"/>
+            <Button Content="移动Z" Command="{s:Action MoveZ}"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceZ,Mode=TwoWay}"/>
+            <Label Content="点动步长" Margin="30,10,0,10" Height="30"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" Decimation="2" Step="0.01" MaxValue="100" Value="{Binding StepZValue,Mode=TwoWay}"/>
+            <Button Content="+" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="Z+"/>
+            <Button Content="-" Width="30" Command="{s:Action ExecuteMove}" CommandParameter="Z-"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,10" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Button Content="抓手复位" Command="{s:Action InitHand}"/>
+            
+            <Button Content="抓手打开" Command="{s:Action SwitchHand}" CommandParameter="1"/>
+            <Button Content="抓手关闭" Command="{s:Action SwitchHand}" CommandParameter="0"/>
+            <Button Content="查看是否抓卡成功" Command="{s:Action CheckGel}"/>
+        </StackPanel>
+        <StackPanel Margin="10,10" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Button Content="全部初始化" Command="{s:Action InitAll}"/>
+        </StackPanel>
+        <StackPanel Margin="10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50">
+            <Button Content="抓 卡" Command="{s:Action TakeGel}"/>
+            <Button Content="放 卡" Command="{s:Action PutDownGel}"/>
+            <Button Content="移动到(XY)" Command="{s:Action MoveXY}"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="200"  Margin="10,10" SelectionChanged="{s:Action SelectionChanged}" ItemsSource="{Binding TargetBJList}" SelectedItem="{Binding SelectedBJ}" DisplayMemberPath="Name"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="80" Margin="10,10" MaxValue="{Binding MaxSelect}" Value="{Binding SeatIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+    </StackPanel>
+</Page>

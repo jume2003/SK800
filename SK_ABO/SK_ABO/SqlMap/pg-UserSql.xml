@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.User" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <resultMaps>
+    <resultMap id="User_Map" class="SKABO.Common.Models.User.T_User">
+      <result property="ID" column="id"/>
+      <result property="LoginName" column="Login_Name"/>
+      <result property="LoginPwd" column="Login_Pwd"/>
+      <result property="IsAdmin" column="Is_Admin"/>
+      <result property="PY" column="PY"/>
+      <result property="RoleCode" column="Role_Code"/>
+      <result property="Status" column="Status"/>
+      <result property="LastLoginTime" column="Last_Login_Time"/>
+      <result property="CreatedTime" column="Created_Time"/>
+      <result property="CreatedBy" column="Created_By"/>
+      <result property="RoleName" column="role_name"/>
+      <result property="RightValue" column="Right_Value"/>
+    </resultMap>
+    <resultMap id="Role_Map" class="SKABO.Common.Models.User.T_Role">
+      <result property="Code" column="Code"/>
+      <result property="Name" column="Name"/>
+      <result property="RightValue" column="Right_Value"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+   
+    <select id="QueryT_User" parameterClass="System.String" resultMap="User_Map" >
+      <![CDATA[ 
+      Select u.*,r.Name as Role_Name,r.Right_Value from u_User u left join u_Role r on (u.Role_Code=r.Code)
+      WHERE Login_Name =#value# and u.Status<>0
+      ]]>
+    </select>
+    <select id="QueryT_UserByPY" parameterClass="System.String" resultMap="User_Map" >
+      <![CDATA[ 
+      Select u.*,r.Name as Role_Name,r.Right_Value from u_User u left join u_Role r on (u.Role_Code=r.Code)
+      WHERE PY like  '%$value$%' and u.Status<>0
+      ]]>
+    </select>
+    <insert id="InsertT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+
+      INSERT INTO u_User (id,Login_Name,Login_Pwd,Is_Admin,PY,Role_Code,Created_Time,Created_By) VALUES
+      (#ID#,#LoginName#,#LoginPwd#,#IsAdmin#,#PY#,#RoleCode#,#CreatedTime#,#CreatedBy#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('u_user_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_User_LastLoginTime"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update u_User set Last_Login_Time=#LastLoginTime# where ID=#ID#
+    </update>
+    <update id="UpdateT_User_PWD"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update u_User set Login_Pwd=#LoginPwd# where ID=#ID#
+    </update>
+    <update id="UpdateT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+
+      Update u_User set Login_Name=#LoginName#,Login_Pwd=#LoginPwd#,Is_Admin=#IsAdmin#,PY=#PY#,Role_Code=#RoleCode# where ID=#ID#
+    </update>
+    <update id="DeleteT_User"  parameterClass="SKABO.Common.Models.User.T_User">
+      Update u_User set Status=0 where ID=#ID#
+    </update>
+    <update id="UpdateRoleRight"  parameterClass="SKABO.Common.Models.User.T_Role">
+      Update u_Role set Right_Value=#RightValue# where Code=#Code#
+    </update>
+    <select id="QueryAllUser" resultMap="User_Map">
+    <![CDATA[ 
+      Select u.*,r.Name as role_name,r.Right_Value from u_User u left join u_Role r on (u.Role_Code=r.Code) where u.Status<>0
+      ]]>
+    </select>
+    <select id="QueryAllRole" resultMap="Role_Map">
+      <![CDATA[ 
+      Select * from u_Role
+      ]]>
+    </select>
+  </statements>
+</sqlMap>

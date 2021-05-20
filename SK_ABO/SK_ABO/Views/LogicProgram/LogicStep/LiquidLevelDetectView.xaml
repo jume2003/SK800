@@ -1,0 +1,48 @@
+﻿<Window x:Class="SK_ABO.Views.LogicProgram.LogicStep.LiquidLevelDetectView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.LogicProgram.LogicStep"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        Background="{StaticResource MainBg}"
+        ResizeMode="NoResize"
+        d:DataContext="{d:DesignInstance {x:Type local:LiquidLevelDetectViewModel}}"
+        ShowInTaskbar="False"
+        xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+        Title="LiquidLevelDetectView" Height="300" Width="500">
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource AwesomeButton}">
+            <Setter Property="Width" Value="95"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid   Grid.Row="1" Background="{DynamicResource BottomToolBarBg}">
+            <ContentControl HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource btnStyle}" Tag="&#xF04B;" Content="确定" Command="{s:Action Confirm}" />
+                    <Button Style="{StaticResource btnStyle}" Tag="&#xF410;" Content="取消"  Command="{s:Action Close}"  />
+                </StackPanel>
+            </ContentControl>
+        </Grid>
+        <GroupBox Header="液面探测" HorizontalAlignment="Left" Height="61" Margin="116,48,0,0" VerticalAlignment="Top" Width="271">
+            <StackPanel Orientation="Horizontal" x:Name="entPanel">
+                
+            </StackPanel>
+        </GroupBox>
+        <TextBlock Text="开始位置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,124,0,0"/>
+        <TextBlock Text="极限位置" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,154,0,0"/>
+        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="167,124,0,0" VerticalAlignment="Top" Height="25" Width="150" Value="{Binding Detect.Start ,Mode=TwoWay}" MaxValue="1000"/>
+        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="167,154,0,0" VerticalAlignment="Top" Height="25" Width="150" Value="{Binding Detect.ZLimit ,Mode=TwoWay}" MaxValue="1000"/>
+        <Label Content="mm" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="322,124,0,0"/>
+        <Label Content="mm" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="322,154,0,0"/>
+    </Grid>
+</Window>
+

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Trace" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="TraceParameter" type="SKABO.Common.Parameters.Trace.TraceParameter" />
+    <typeAlias alias="T_Trace" type="SKABO.Common.Models.Trace.T_Trace" />
+  </alias>
+  <resultMaps>
+    <resultMap id="T_Trace_Map" class="T_Trace">
+      <result property="ID" column="ID"/>
+      <result property="TraceTime" column="Trace_Time"/>
+      <result property="TraceUser" column="Trace_User" />
+      <result property="TraceStr" column="Trace_Str" />
+      <result property="TraceLevel" column="Trace_Level" />
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <insert id="InsertT_Trace"  parameterClass="T_Trace">
+
+      insert into sys_Trace(id,Trace_Time,Trace_User,Trace_Str,Trace_Level) values (#ID#,#TraceTime#,#TraceUser#,#TraceStr#,#TraceLevel#)
+      <selectKey resultClass="long" type="pre" property="ID">
+        select nextval('sys_trace_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <select id="QueryT_Trace" parameterClass="TraceParameter" resultMap="T_Trace_Map">
+
+      select * from sys_Trace
+      <dynamic prepend="where">
+          <isParameterPresent>
+            <isNotEmpty prepend="and" property="TraceUser" >
+              Trace_User = #TraceUser#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="TraceTimeStart" >
+              Trace_Time &gt;= #TraceTimeStart#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="RealTraceTimeEnd" >
+              Trace_Time &lt; #RealTraceTimeEnd#
+            </isNotEmpty>
+          </isParameterPresent>
+      </dynamic>
+        
+    </select>
+   
+  </statements>
+</sqlMap>

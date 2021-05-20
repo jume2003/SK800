@@ -1,0 +1,92 @@
+﻿<Page x:Class="SK_ABO.Pages.Device.MixerAndCouveuseView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.Device"
+      mc:Ignorable="d" 
+      d:DesignHeight="646.5" d:DesignWidth="888"
+      xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" 
+      xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:MixerAndCouveuseViewModel}"
+      Title="MixerAndCouveuseView">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+        </Style>
+        <Style TargetType="UserCtrls:NumericUpDown_Control" >
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinValue" Value="0"/>
+        </Style>
+        <Style TargetType="TextBox" >
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <GroupBox Header="孵育器" HorizontalAlignment="Left" Height="273" Margin="36,23,0,0" VerticalAlignment="Top" Width="390">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="250" Margin="10,10" Grid.ColumnSpan="2" ItemsSource="{Binding HatchList}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}"/>
+                <Button Content="初始化" Grid.Row="1" Command="{s:Action StartHot}"/>
+                <Button Content="停止" Grid.Row="2" Command="{s:Action StopHot}"/>
+                <Button Content="查询" Grid.Row="3" Command="{s:Action QueryTemp}"/>
+                <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" Grid.Row="1" Grid.Column="1" Decimation="1" Step="0.1" Value="{Binding InitTemp,Mode=TwoWay}"/>
+                <Label VerticalAlignment="Top" Foreground="Blue" Content="℃" Height="30" Width="50" Margin="100,10,0,0" Grid.Row="1" Grid.Column="1"/>
+                <Label VerticalAlignment="Top" Foreground="Blue" Content="{Binding CurrentTemp}" Height="30" Width="150" Margin="10,10,0,0" Grid.Row="3" Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="混匀器" HorizontalAlignment="Left" Height="273" Margin="458,23,0,0" VerticalAlignment="Top" Width="328">
+            <StackPanel Margin="10,10" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                <Button Content="初始化" Command="{s:Action InitMixer}"/>
+                <Button Content="停止" Command="{s:Action StopMixer}"/>
+                <Button Content="运行" Command="{s:Action StartMixer}"/>
+                <StackPanel Margin="0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Button Content="移动" Command="{s:Action MoveZ}"/>
+                    <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceZ,Mode=TwoWay}"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </GroupBox>
+
+        <GroupBox Header="前灯光" HorizontalAlignment="Left" Height="273" Margin="36,317,0,0" VerticalAlignment="Top" Width="390">
+            <Grid>
+                <StackPanel Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Width="380" >
+                    <CheckBox IsChecked="{Binding leds[0]}" Content="灯1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[1]}" Content="灯2" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[2]}" Content="灯3" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[3]}" Content="灯4" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[4]}" Content="灯5" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[5]}" Content="灯6" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                    <CheckBox IsChecked="{Binding leds[6]}" Content="灯7" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="50"/>
+                </StackPanel>
+                <StackPanel Margin="0,50,0,0" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Height="173" >
+                    <Button Content="绿色" Command="{s:Action LedGreen}"/>
+                    <Button Content="蓝色" Command="{s:Action LedBule}"/>
+                    <Button Content="红色" Command="{s:Action LedRed}"/>
+                    <Button Content="红色闪烁" Command="{s:Action LedRedBlink}"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Page>

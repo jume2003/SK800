@@ -1,0 +1,84 @@
+﻿<Page x:Class="SK_ABO.Pages.SetStep.FPBRXSHXBView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.SetStep"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="900"
+      xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:FPBRXSHXBViewModel}"
+      s:View.ActionTarget="{Binding}"
+      xmlns:UserCtrls="clr-namespace:SK_ABO.UserCtrls"
+      xmlns:UserCtrls1="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+       Loaded="{s:Action Page_Loaded}"
+      Title="FPBRXSHXBView">
+
+    <Page.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="UserCtrls1:NumericUpDown_Control" >
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinValue" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="容量："  Margin="0,30,0,0" />
+        <!--<Label Content="液体类别："  Margin="0,65,0,0" /-->
+        <Label Content="凝胶微柱："  Margin="0,65,0,0" />
+        <Label Content="加样深度：" Margin="0,100,0,0" />
+        <Label Content="探液深度：" Margin="0,135,0,0" />
+        <UserCtrls1:NumericUpDown_Control x:Name="NumVol"  Margin="0,30,0,0"  Tag="Param.Vol" Decimation="1" Step="0.1" MaxValue="1000"/>
+        <!--<ComboBox Grid.Column="1" Height="25" Width="150" Margin="0,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/-->
+        <UserCtrls:CheckTube_UserControl Grid.Column="1" x:Name="ChkTube" HorizontalAlignment="Left" Height="25" Margin="0,70,0,0" VerticalAlignment="Top" Width="280" Value="{Binding Param.TubeValue, Mode=TwoWay}" FontSize="14"/>
+
+        <UserCtrls1:NumericUpDown_Control  Margin="0,100,0,0" Tag="Param.Deep" Decimation="1" Step="0.1" MaxValue="10000"/>
+        <UserCtrls1:NumericUpDown_Control  Margin="0,135,0,0" Tag="Param.DetectorDeep" Decimation="1" Step="0.1" MaxValue="10000"/>
+        <GroupBox Grid.Column="1" Header="稀释参数" HorizontalAlignment="Left" Height="430" Margin="324,0,0,0" VerticalAlignment="Top" Width="360">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="稀释液代码"  Margin="0,0,0,0" />
+                <Label Content="红细胞的起始量(ul)"  Margin="0,35,0,0" />
+                <Label Content="吸红细胞等待时间(ms)"  Margin="0,70,0,0" />
+                <Label Content="稀释液量(ul)"  Margin="0,105,0,0" />
+                <Label Content="稀释液吸液速度"  Margin="0,140,0,0" />
+                <Label Content="红细胞吸液速度"  Margin="0,175,0,0" />
+                <Label Content="第一阶段混匀次数"  Margin="0,210,0,0" />
+                <Label Content="第一阶段混匀容量"  Margin="0,245,0,0" />
+                <Label Content="第二阶段混匀次数"  Margin="0,280,0,0" />
+                <Label Content="第二阶段混匀容量"  Margin="0,315,0,0" />
+                <Label Content="混匀流速"  Margin="0,350,0,0" />
+                <TextBox Grid.Column="1" Height="25" Width="150" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Param.XSYCode}"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,35,0,0" Tag="Param.RedCellVol" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,70,0,0" Tag="Param.WaitTimeForAbsorbRedCell" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,105,0,0" Tag="Param.XSYVol" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,140,0,0" Tag="Param.AbsorbSpeedOfXSY" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,175,0,0" Tag="Param.AbsorbSpeedOfRedCell" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,210,0,0" Tag="Param.MixedCountFirst" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,245,0,0" Tag="Param.MixedVolFirst" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,280,0,0" Tag="Param.MixedCountSecond" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,315,0,0" Tag="Param.MixedVolSecond" MaxValue="5000"/>
+                <UserCtrls1:NumericUpDown_Control  Margin="0,350,0,0" Tag="Param.MixedSpeed" MaxValue="5000"/>
+
+                <!--CheckBox Grid.ColumnSpan="2" Height="25" Width="150" Margin="60,385,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="手工配置深孔板稀释液"/-->
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Page>

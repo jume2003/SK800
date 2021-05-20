@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Gel" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="Gel" type="SKABO.Common.Models.GEL.T_Gel" />
+    <typeAlias alias="TResultMap" type="SKABO.Common.Models.GEL.T_ResultMap"/>
+    <typeAlias alias="TGelStep" type="SKABO.Common.Models.GEL.T_GelStep"/>
+    </alias>
+  <resultMaps>
+    <resultMap id="T_StepDefine_Map" class="SKABO.Common.Models.GEL.T_StepDefine">
+      <result property="ID" column="ID"/>
+      <result property="StepDesc" column="Step_Desc"/>
+      <result property="StepName" column="Step_Name"/>
+      <result property="StepClass" column="Step_Class"/>
+    </resultMap>
+    <resultMap id="TGelStep_Map" class="TGelStep">
+      <result property="ID" column="ID"/>
+      <result property="GelID" column="Gel_ID"/>
+      <result property="StepID" column="Step_ID"/>
+      <result property="StepIndex" column="Step_Index"/>
+      <result property="StepParamters" column="Step_Paramters"/>
+      <result property="StepName" column="Step_Name"/>
+      <result property="StepClass" column="Step_Class"/>
+      <result property="GoSideID" column="GoSide_ID"/>
+      <result property="InjectCount" column="Inject_Count"/>
+    </resultMap>
+    <resultMap id="TResultMap_Map" class="TResultMap">
+      <result property="ID" column="ID"/>
+      <result property="GelID" column="Gel_ID"/>
+      <result property="ResultMap" column="Result_Map"/>
+      <result property="ResultDesc" column="Result_Desc"/>
+      <result property="Color" column="Color"/>
+      <result property="BloodSystem" column="Blood_System"/>
+    </resultMap>
+    <resultMap id="Gel_Map_Result" class="Gel">
+      <result property="ID" column="ID"/>
+      <result property="GelName" column="Gel_Name"/>
+      <result property="TestName" column="test_Name"/>
+      <result property="GelType" column="Gel_Type"/>
+      <result property="GelMask" column="Gel_Mask"/>
+      <result property="IsMaskAtEnd" column="Is_Mask_At_End"/>
+      <result property="IsEnabled" column="Is_Enabled"/>
+      <result property="GelRenFen" column="Gel_Ren_Fen"/>
+      <result property="Name1" column="Name1"/>
+      <result property="Name2" column="Name2"/>
+      <result property="Name3" column="Name3"/>
+      <result property="Name4" column="Name4"/>
+      <result property="Name5" column="Name5"/>
+      <result property="Name6" column="Name6"/>
+      <result property="Name7" column="Name7"/>
+      <result property="Name8" column="Name8"/>
+      <result property="UnknownResult" column="Unknown_Result"/>
+      <result property="LisGelClass" column="Lis_Gel_Class"/>
+      <result property="MaxInOne" column="Max_In_One"/>
+      <result property="KeepTime" column="Keep_Time"/>
+      <result property="Priority" column="Priority"/>
+      <result property="AfterJudged" column="After_Judged"/>
+      <result property="IsUsedGel" column="Is_Used_Gel"/>
+      <result property="IsCrossMatching" column="Is_CrossMatching"/>
+      <result property="AfterKKTime" column="After_KK_Time"/>
+      <result property="ResultMaps" column="ID" select="QueryResMapByGelId"/>
+      <result property="GelSteps" column="ID" select="QueryGelStepByGelId"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+    <select id="QueryAllT_Gel" parameterClass="System.String" resultMap="Gel_Map_Result" >
+      SELECT * FROM Gel order by id
+    </select>
+    <insert id="InsertT_Gel"  parameterClass="Gel">
+
+      insert into Gel(id,Gel_Name,Gel_Type,Gel_Mask,Is_Mask_At_End,Is_Enabled,Gel_Ren_Fen,Name1,Name2,Name3,Name4,Name5,Name6,Name7,Name8,Unknown_Result,
+      Lis_Gel_Class,Max_In_One,Keep_Time,Priority,After_Judged,Is_Used_Gel,Is_CrossMatching,After_KK_Time,test_name) values
+      (#ID#,#GelName#,#GelType#,#GelMask#,#IsMaskAtEnd#,#IsEnabled#,#GelRenFen#,#Name1#,#Name2#,#Name3#,#Name4#,#Name5#,#Name6#,#Name7#,
+      #Name8#,#UnknownResult#,#LisGelClass#,#MaxInOne#,#KeepTime#,#Priority#,#AfterJudged#,#IsUsedGel#,#IsCrossMatching#,#AfterKKTime#,#TestName#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('gel_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_Gel"  parameterClass="Gel">
+      update Gel set Gel_Name=#GelName#,Gel_Type=#GelType#,Gel_Mask=#GelMask#,Is_Mask_At_End=#IsMaskAtEnd#,Is_Enabled=#IsEnabled#,Gel_Ren_Fen=#GelRenFen#,
+      Name1=#Name1#,Name2=#Name2#,Name3=#Name3#,Name4=#Name4#,Name5=#Name5#,Name6=#Name6#,Name7=#Name7#,Name8=#Name8#,Unknown_Result=#UnknownResult#,test_name=#TestName#,
+      Lis_Gel_Class=#LisGelClass#,Max_In_One=#MaxInOne#,Keep_Time=#KeepTime#,Priority=#Priority#,After_Judged=#AfterJudged#,Is_Used_Gel=#IsUsedGel#,Is_CrossMatching=#IsCrossMatching#,After_KK_Time=#AfterKKTime# where ID=#ID#
+    </update>
+
+    <select id="QueryResMapByGelId" parameterClass="int" resultMap="TResultMap_Map">
+      <![CDATA[ 
+        select * 
+        from Result_Map  
+        where Gel_ID = #Gelid#  
+        ]]>
+    </select>
+    <insert id="InsertT_ResultMap"  parameterClass="TResultMap">
+
+      insert into Result_Map(id,Gel_ID,Result_Map,Result_Desc,Color,Blood_System) values(#ID#,#GelID#,#ResultMap#,#ResultDesc#,#Color#,#BloodSystem#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('result_map_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_ResultMap"  parameterClass="TResultMap">
+
+      update Result_Map set Gel_ID=#GelID#,Result_Map=#ResultMap#,Result_Desc=#ResultDesc#,Color=#Color#,Blood_System=#BloodSystem# where ID=#ID#
+    </update>
+
+    <select id="QueryGelStepByGelId" parameterClass="int" resultMap="TGelStep_Map">
+      <![CDATA[ 
+        select g.*,Step_Name,Step_Class,Inject_Count 
+        from Gel_Step g left join logic_step_define s on (g.Step_ID=s.ID)
+        where Gel_ID = #Gelid#  order by Step_Index
+        ]]>
+    </select>
+    <select id="QueryAllT_StepDefine" resultMap="T_StepDefine_Map">
+      select * from logic_step_define
+    </select>
+    
+    <select id="QueryStepDefineBySetpClass" resultMap="T_StepDefine_Map">
+      select * from logic_step_define where step_class = #StepClass#
+    </select>
+    
+    <insert id="InsertT_GelStep"  parameterClass="TGelStep">
+
+      insert into Gel_Step(id,Gel_ID,Step_ID,Step_Paramters,Step_Index,GoSide_ID) values(#ID#,#GelID#,#StepID#,#StepParamters#,#StepIndex#,#GoSideID#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('gel_step_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_GelStep"  parameterClass="TGelStep">
+      update Gel_Step set Gel_ID=#GelID#,Step_ID=#StepID#,Step_Paramters=#StepParamters#,GoSide_ID=#GoSideID#,Step_Index=#StepIndex# where ID=#ID#
+    </update>
+    <delete id="DeleteT_GelStepByIDs" parameterClass="String">
+      delete from Gel_Step where ID in ($value$)
+    </delete>
+    <delete id="DeleteT_ResultMapByIDs" parameterClass="String">
+      delete from Result_Map where ID in ($value$)
+    </delete>
+    <delete id="DeleteT_Gel" parameterClass="Gel">
+      delete from Gel where ID =#ID#
+    </delete>
+  </statements>
+</sqlMap>

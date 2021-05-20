@@ -1,0 +1,50 @@
+﻿<Window x:Class="SK_ABO.Pages.QcEtcView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Pages"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:QcEtcViewModel}"
+        Title="QcEtcView" Height="863.844" Width="1394.34">
+    <Grid Margin="0,0,0,0">
+        <StackPanel Orientation="Vertical">
+            
+            <StackPanel Orientation="Horizontal">
+                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" SelectedDate="{Binding resultParameter.StartTime}" Width="100"/>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding GelList}" DisplayMemberPath="GelName" SelectedItem="{Binding SelectedGel}" SelectedValuePath="ID" SelectedValue="{Binding resultParameter.GelID}" Width="120"/>
+                <Button Content="查询" Tag="&#xF00E;" Command="{s:Action Query}" Width="120"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top"  Width="100"  SelectedDate="{Binding resultParameter.EndTime}"/>
+                <TextBox  Text="{Binding QcSmpbarCode}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <DataGrid VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding ResultList}" CanUserAddRows="False" CanUserDeleteRows="False"  SelectionChanged="{s:Action DataGrid_SelectionChanged}" Height="722">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding GelBarcode}" Header="GEL条码" Width="200"/>
+                        <DataGridTextColumn Binding="{Binding EndTime}" ClipboardContentBinding="{x:Null}" Header="完成时间" Width="170"/>
+                        <DataGridTextColumn Binding="{Binding Result}" ClipboardContentBinding="{x:Null}" Header="结果" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T1}" ClipboardContentBinding="{x:Null}" Header="P1" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T2}" ClipboardContentBinding="{x:Null}" Header="P2" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T3}" ClipboardContentBinding="{x:Null}" Header="P3" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T4}" ClipboardContentBinding="{x:Null}" Header="P4" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T5}" ClipboardContentBinding="{x:Null}" Header="P5" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T6}" ClipboardContentBinding="{x:Null}" Header="P6" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T7}" ClipboardContentBinding="{x:Null}" Header="P7" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Picture.T8}" ClipboardContentBinding="{x:Null}" Header="P8" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding GelCount}" ClipboardContentBinding="{x:Null}" Header="." Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Content="质控图" HorizontalAlignment="Left" VerticalAlignment="Top" Width="198" Height="35" Command="{s:Action ShowQcPic}"/>
+            </StackPanel>
+        </StackPanel>
+        
+
+        <!--<Button Content="打印" HorizontalAlignment="Left" Margin="10,720,0,0" VerticalAlignment="Top" Width="194" Height="60" Command="{s:Action Printer}"/>-->
+       
+    </Grid>
+</Window>

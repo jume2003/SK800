@@ -1,0 +1,51 @@
+﻿<Window x:Class="SK_ABO.Views.NotDuplex.ScanSampleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.NotDuplex"
+        xmlns:s="https://github.com/canton7/Stylet"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ScanSampleViewModel}"
+        WindowStartupLocation="CenterScreen" Background="{DynamicResource MainBg}"
+        Title="ScanSampleView" Height="450" Width="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid   Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" >
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource AwesomeButton}" Tag="&#xf015;" Content="确 定"  Margin="5,5,0,0"   Height="40" Command="{s:Action Ok}" />
+                
+                <Button Style="{StaticResource AwesomeButton}" Tag="&#xf481;" Content="关 闭" Margin="10,5,0,0"   Height="40" Command="{s:Action Close}" />
+            </StackPanel>
+        </Grid>
+        <DataGrid x:Name="TestDataGrid" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" 
+                  ItemsSource="{Binding Samples}" AutoGenerateColumns="False" 
+                  MouseDoubleClick="{s:Action TestDataGrid_MouseDoubleClick}"  
+                  Sorting="{s:Action TestDataGrid_Sorting}"
+                  CanUserAddRows="False" CanUserSortColumns="True" CanUserDeleteRows="False" LoadingRow="TestDataGrid_LoadingRow">
+            <DataGrid.Columns>
+                <!-- 
+                    <DataGridTemplateColumn Header="优先级">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Margin="0,0,0,0" Content="正常" IsChecked="{Binding Normal}"/>
+                                <RadioButton Margin="10,0,0,0" Content="加急" IsChecked="{Binding Fast}"/>
+                                <RadioButton Margin="10,0,0,0" Content="最急" IsChecked="{Binding Faster}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                    
+                    -->
+                
+                <DataGridTextColumn Binding="{Binding RackIndex}" ClipboardContentBinding="{x:Null}" Header="R"/>
+                <DataGridTextColumn Binding="{Binding Index}" ClipboardContentBinding="{x:Null}" Header="W"/>
+                <DataGridTextColumn Binding="{Binding Barcode}" ClipboardContentBinding="{x:Null}" Header="Sample Code" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

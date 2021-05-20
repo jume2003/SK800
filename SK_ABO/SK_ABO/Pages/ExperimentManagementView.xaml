@@ -1,0 +1,22 @@
+﻿<Window x:Class="SK_ABO.Pages.ExperimentManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Pages"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:ExperimentManagementViewModel}"
+        Title="ExperimentManagementView" Height="719.844" Width="1217.84">
+    <Grid Margin="0,0,0,0">
+        <DataGrid x:Name="dataGrid1" Margin="0,0,0,0" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding ResultList}" CanUserAddRows="False" CanUserDeleteRows="False" Grid.ColumnSpan="3"  SelectionChanged="{s:Action DataGrid_SelectionChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ExperimentName}" IsReadOnly="true" Header="试验名字" Width="250"/>
+                <DataGridTextColumn Binding="{Binding ExperimentStartTime}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="开始时间" Width="250"/>
+                <DataGridTextColumn Binding="{Binding ExperimentState}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="当前状态" Width="250"/>
+                <DataGridTextColumn Binding="{Binding ExperimentActionName}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="当前步骤" Width="250"/>
+                <DataGridTextColumn Binding="{Binding ExperimentSetpCount}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="剩余步骤" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

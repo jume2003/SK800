@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SK_ABO.UserCtrls.Camera_Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="150">
+    <Grid>
+        <Ellipse HorizontalAlignment="Stretch"  Margin="0,0,0,0" Stroke="Black" VerticalAlignment="Stretch" Fill="White"/>
+        <Label Content="&#xF030;" HorizontalAlignment="Stretch" Margin="0,0,0,0"  VerticalAlignment="Stretch" FontFamily="Font Awesome 5 Free Solid" Foreground="Blue" FontSize="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

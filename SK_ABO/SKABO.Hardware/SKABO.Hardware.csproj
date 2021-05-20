@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF6532E6-8856-46F1-A12D-EF7D732EA4F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SKABO.Hardware</RootNamespace>
+    <AssemblyName>SKABO.Hardware</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionEngine\ActionDevice.cs" />
+    <Compile Include="ActionEngine\ActionGenerater.cs" />
+    <Compile Include="ActionEngine\ActionGroup.cs" />
+    <Compile Include="ActionEngine\ActionManager.cs" />
+    <Compile Include="ActionEngine\Actions.cs" />
+    <Compile Include="ActionEngine\Engine.cs" />
+    <Compile Include="ActionEngine\ExperimentLogic.cs" />
+    <Compile Include="ActionEngine\ExperimentPackage.cs" />
+    <Compile Include="ActionEngine\HisSystem.cs" />
+    <Compile Include="ActionEngine\LogicActionGoup.cs" />
+    <Compile Include="ActionEngine\ResManager.cs" />
+    <Compile Include="Core\AbstractCanComm.cs" />
+    <Compile Include="Core\AbstractComm.cs" />
+    <Compile Include="Core\AsyncCommunicater.cs" />
+    <Compile Include="Core\Communicater.cs" />
+    <Compile Include="Core\PcbComm.cs" />
+    <Compile Include="Core\SyncCommunicater.cs" />
+    <Compile Include="Core\ZLG\CanStruct.cs" />
+    <Compile Include="Core\ZLG\ZLGCanComm.cs" />
+    <Compile Include="Enums\CanFunCodeEnum.cs" />
+    <Compile Include="Enums\DeviceIDEnum.cs" />
+    <Compile Include="Enums\ModbusErrorEnum.cs" />
+    <Compile Include="Enums\ModbusFunCode.cs" />
+    <Compile Include="ErrorSystem\ErrorSystem.cs" />
+    <Compile Include="Factory\StepFactory.cs" />
+    <Compile Include="Model\AbstractCanDevice.cs" />
+    <Compile Include="RunBJ\CameraDevice.cs" />
+    <Compile Include="RunBJ\CentrifugeDevice.cs" />
+    <Compile Include="RunBJ\CentrifugeMDevice.cs" />
+    <Compile Include="RunBJ\CentrifugeMrg.cs" />
+    <Compile Include="RunBJ\CouveuseMixerDevice.cs" />
+    <Compile Include="RunBJ\GelWarehouseDevice.cs" />
+    <Compile Include="RunBJ\InjectorDevice.cs" />
+    <Compile Include="RunBJ\MachineHandDevice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunBJ\OtherPartDevice.cs" />
+    <Compile Include="RunBJ\PiercerDevice.cs" />
+    <Compile Include="Scaner\BL1300.cs" />
+    <Compile Include="Scaner\FM316.cs" />
+    <Compile Include="Scaner\FX8090.cs" />
+    <Compile Include="Scaner\ScanDevice.cs" />
+    <Compile Include="Step\FPBRXQStep.cs" />
+    <Compile Include="Step\FPBRXSHXBStep.cs" />
+    <Compile Include="Step\FPSJStep.cs" />
+    <Compile Include="Step\FPXXYXQStep.cs" />
+    <Compile Include="Step\FPXXYXSHXBStep.cs" />
+    <Compile Include="Step\JYJSStep.cs" />
+    <Compile Include="Step\KaiKongGelStep.cs" />
+    <Compile Include="Step\LoadGelStep.cs" />
+    <Compile Include="Step\LXJDZStep.cs" />
+    <Compile Include="Step\XJPDStep.cs" />
+    <Compile Include="Step\YSStep.cs" />
+    <Compile Include="Step\ZKDCWStep.cs" />
+    <Compile Include="Step\ZKDFYStep.cs" />
+    <Compile Include="Step\ZKDLXJStep.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ihardware\SKABO.Ihardware.csproj">
+      <Project>{BA2FB41B-281C-493B-A816-15F6C901465C}</Project>
+      <Name>SKABO.Ihardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.BLL\SKABO.BLL.csproj">
+      <Project>{58ba6148-3c77-4bc3-a340-66d4fbdb0788}</Project>
+      <Name>SKABO.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Camera\SKABO.Camera.csproj">
+      <Project>{947ADE47-FEE7-4032-9B1A-20F6E7C175BA}</Project>
+      <Name>SKABO.Camera</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Common\SKABO.Common.csproj">
+      <Project>{30CD92EE-5148-4833-A047-3F34767566D7}</Project>
+      <Name>SKABO.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKABO.Judger\SKABO.Judger.csproj">
+      <Project>{31C602C6-AC5C-41E8-924D-43E1D2190D0B}</Project>
+      <Name>SKABO.Judger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="kerneldlls\kerneldll.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ControlCAN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CAN232.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CANDTU_NET.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CANETE.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CANET_TCP.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CANWIFI_TCP.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\CANWIFI_UDP.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\gisadll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\gpcidll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\isa5420.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\PC104C2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\PC104CAN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\PCI5121.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kerneldlls\usbcan.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

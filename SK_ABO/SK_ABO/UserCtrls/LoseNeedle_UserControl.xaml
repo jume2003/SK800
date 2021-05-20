@@ -1,0 +1,15 @@
+﻿<UserControl x:Name="LoseNeedle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SK_ABO.UserCtrls"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="SK_ABO.UserCtrls.LoseNeedle_UserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="60" Loaded="UserControl_Loaded">
+    <Grid x:Name="docCanvas" Background="Transparent">
+        <Canvas>
+            <Rectangle HorizontalAlignment="Stretch"   Stroke="Black" VerticalAlignment="Stretch" Height="{Binding Height, ElementName=LoseNeedle}" Width="{Binding Width, ElementName=LoseNeedle}"/>
+        </Canvas>
+    </Grid>
+</UserControl>

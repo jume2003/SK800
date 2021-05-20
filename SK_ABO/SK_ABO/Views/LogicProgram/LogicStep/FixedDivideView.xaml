@@ -1,0 +1,64 @@
+﻿<Window x:Class="SK_ABO.Views.LogicProgram.LogicStep.FixedDivideView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.LogicProgram.LogicStep"
+        mc:Ignorable="d"
+         xmlns:s="https://github.com/canton7/Stylet"
+        Background="{StaticResource MainBg}"
+        ResizeMode="NoResize"
+        d:DataContext="{d:DesignInstance {x:Type local:FixedDivideViewModel}}"
+        ShowInTaskbar="False"
+        xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common"
+        Title="FixedDivideView" Height="400" Width="500">
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource AwesomeButton}">
+            <Setter Property="Width" Value="95"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid   Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" Grid.ColumnSpan="2">
+            <ContentControl HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource btnStyle}" Tag="&#xF04B;" Content="确定" Command="{s:Action Confirm}" />
+                    <Button Style="{StaticResource btnStyle}" Tag="&#xF410;" Content="取消"  Command="{s:Action Close}"  />
+                </StackPanel>
+            </ContentControl>
+        </Grid>
+        <GroupBox Header="固定分液" HorizontalAlignment="Left" Height="55" Margin="116,5,0,0" VerticalAlignment="Top" Width="271" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="1" Margin="20,10,0,0"/>
+                <CheckBox Content="2" Margin="20,10,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel>
+            <Label Content="分液容量(ul)" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,5,0"/>
+            <Label Content="分液速度(8-240)" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Label Content="回吸容量(ul)" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Label Content="回吸速度" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Label Content="Z相对移动" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Label Content="X相对移动" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+            <Label Content="Y相对移动" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,60,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="1000"/>
+        <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+            <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+            <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+            <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+            <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+            <UserCtrls:NumericUpDown_Control HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="25" Width="220" Value="{Binding Command.ID ,Mode=TwoWay}" MaxValue="240" MinValue="8"/>
+   </StackPanel>
+        </Grid>
+</Window>

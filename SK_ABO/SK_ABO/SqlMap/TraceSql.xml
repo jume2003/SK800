@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Trace" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="TraceParameter" type="SKABO.Common.Parameters.Trace.TraceParameter" />
+    <typeAlias alias="T_Trace" type="SKABO.Common.Models.Trace.T_Trace" />
+  </alias>
+  <resultMaps>
+    
+  </resultMaps>
+  <statements>
+
+    <insert id="InsertT_Trace"  parameterClass="T_Trace">
+
+      insert into T_Trace(TraceTime,TraceUser,TraceStr,TraceLevel) values (#TraceTime#,#TraceUser#,#TraceStr#,#TraceLevel#)
+      <selectKey resultClass="long" type="post" property="ID">
+        select @@IDENTITY
+      </selectKey>
+    </insert>
+    <select id="QueryT_Trace" parameterClass="TraceParameter" resultClass="T_Trace">
+     
+        select * from T_Trace 
+        <dynamic prepend="where">
+          <isParameterPresent>
+            <isNotEmpty prepend="and" property="TraceUser" >
+              TraceUser = #TraceUser#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="TraceTimeStart" >
+              TraceTime &gt;= #TraceTimeStart#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="RealTraceTimeEnd" >
+              TraceTime &lt; #RealTraceTimeEnd#
+            </isNotEmpty>
+          </isParameterPresent>
+      </dynamic>
+        
+    </select>
+   
+  </statements>
+</sqlMap>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="SKABO.Common.Models.Logic" xmlns="http://ibatis.apache.org/mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <alias>
+    <typeAlias alias="T_LogicStep" type="SKABO.Common.Models.Logic.T_LogicStep" />
+    <typeAlias alias="T_LogicTest" type="SKABO.Common.Models.Logic.T_LogicTest"/>
+  </alias>
+  <resultMaps>
+    <resultMap id="T_LogicTest_Map" class="T_LogicTest">
+      <result property="ID" column="ID"/>
+      <result property="Name" column="Name"/>
+      <result property="LogicSteps" column="ID" select="QueryLogicStepByProgramId"/>
+    </resultMap>
+    <resultMap id="T_LogicStep_Map" class="T_LogicStep">
+      <result property="ID" column="ID"/>
+      <result property="Name" column="Name"/>
+      <result property="OrderIndex" column="Order_Index"/>
+      <result property="Parameters" column="Parameters"/>
+      <result property="StepID" column="Step_ID"/>
+      <result property="StepEnum" column="Step_enum"/>
+      <result property="ProgramID" column="Program_ID"/>
+    </resultMap>
+  </resultMaps>
+  <statements>
+
+    <select id="QueryT_LogicTest" parameterClass="System.String" resultMap="T_LogicTest_Map" >
+      SELECT * FROM logic_test order by id
+    </select>
+    <select id="QueryT_LogicTestById" parameterClass="System.Int32" resultMap="T_LogicTest_Map" >
+      SELECT * FROM logic_test where ID=#value#
+    </select>
+    <insert id="InsertT_LogicTest"  parameterClass="T_LogicTest">
+
+      INSERT INTO logic_test (id,Name) VALUES
+      (#ID#,#Name#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('logic_test_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_LogicTest"  parameterClass="T_LogicTest">
+
+      Update logic_test set Name=#Name# where ID=#ID#
+    </update>
+    <delete id="DeleteT_LogicTest" parameterClass="int">
+      delete from logic_test where ID=#value#
+    </delete>
+    <select id="QueryLogicStepByProgramId" parameterClass="int" resultMap="T_LogicStep_Map">
+      <![CDATA[ 
+        select * 
+        from logic_step  
+        where Program_ID = #ID#  order by Order_Index
+        ]]>
+    </select>
+    <insert id="InsertT_LogicStep"  parameterClass="T_LogicStep">
+
+      insert into logic_step(id,Name,Order_Index,Parameters,Step_ID,Program_ID,Step_enum) values(#ID#,#Name#,#OrderIndex#,#Parameters#,#StepID#,#ProgramID#,#StepEnum#)
+      <selectKey resultClass="int" type="pre" property="ID">
+        select nextval('logic_step_id_seq'::regclass)
+      </selectKey>
+    </insert>
+    <update id="UpdateT_LogicStep"  parameterClass="T_LogicStep">
+      update logic_step set Name=#Name#,Order_Index=#OrderIndex#,Parameters=#Parameters#,Step_ID=#StepID#,Program_ID=#ProgramID#,Step_enum=#StepEnum# where ID=#ID#
+    </update>
+    <delete id="DeleteT_LogicStep" parameterClass="int">
+      delete from logic_step where id=#value#
+    </delete>
+    <delete id="DeleteT_LogicStepByProgramId" parameterClass="int">
+      delete from logic_step where Program_ID=#value#
+    </delete>
+  </statements>
+</sqlMap>

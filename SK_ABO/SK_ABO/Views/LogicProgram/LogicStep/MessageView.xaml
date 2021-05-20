@@ -1,0 +1,37 @@
+﻿<Window x:Class="SK_ABO.Views.LogicProgram.LogicStep.MessageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Views.LogicProgram.LogicStep"
+        mc:Ignorable="d"
+        Background="{StaticResource MainBg}"
+        ResizeMode="NoResize"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance {x:Type local:MessageViewModel}}"
+        ShowInTaskbar="False"
+        Title="请输入" Height="300" Width="500" >
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="Button" BasedOn="{StaticResource AwesomeButton}">
+            <Setter Property="Width" Value="95"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="10,5,0,0"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="提示信息" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,64,0,0"/>
+        <TextBox Width="300" Height="30" Text="{Binding Parameters}"/>
+        <Grid   Grid.Row="1" Background="{DynamicResource BottomToolBarBg}" >
+            <ContentControl HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource btnStyle}" Tag="&#xf04b;" Content="确定" Command="{s:Action Confirm}" />
+                <Button Style="{StaticResource btnStyle}" Tag="&#xf410;" Content="取消"  Command="{s:Action Close}"  />
+            </StackPanel>
+            </ContentControl>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="SK_ABO.Pages.TaskManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SK_ABO.Pages"
+        mc:Ignorable="d"
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:TaskManagementViewModel}"
+        Title="TaskManagementView" Height="863.844" Width="1215.84">
+    <Grid Margin="0,0,0,0">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="780" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+            <DataGrid x:Name="dataGrid1" Margin="0,0,0,0" VerticalAlignment="Stretch" AutoGenerateColumns="False" ItemsSource="{Binding ResultList}" CanUserAddRows="False" CanUserDeleteRows="False" Grid.ColumnSpan="3"  SelectionChanged="{s:Action DataGrid_SelectionChanged}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding TaskName}" IsReadOnly="true" Header="任务名字" Width="250"/>
+                    <DataGridTextColumn Binding="{Binding TaskStartTime}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="开始时间" Width="250"/>
+                    <DataGridTextColumn Binding="{Binding TaskState}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="当前状态" Width="250"/>
+                    <DataGridTextColumn Binding="{Binding TaskActionName}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="当前步骤" Width="250"/>
+                    <DataGridTextColumn Binding="{Binding TaskSetpCount}" IsReadOnly="true" ClipboardContentBinding="{x:Null}" Header="剩余步骤" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <WrapPanel Margin="0,785,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="1376">
+            <Button Content="停止" Command="{s:Action StopTask}" Height="40" Width="100"/>
+            <Button Content="运行" Command="{s:Action RunTask}" Height="40" Width="100"/>
+            <Button Content="删除" Command="{s:Action DeleteTask}" Height="40" Width="100"/>
+        </WrapPanel>
+    </Grid>
+</Window>

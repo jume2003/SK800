@@ -1,0 +1,135 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SK_ABO.Pages.Device"
+      xmlns:UserCtrls="clr-namespace:SKABO.Common.UserCtrls;assembly=SKABO.Common" x:Class="SK_ABO.Pages.Device.JYQView"
+      xmlns:oxy="http://oxyplot.org/wpf"
+      mc:Ignorable="d" 
+        xmlns:s="https://github.com/canton7/Stylet"
+        d:DataContext="{d:DesignInstance local:JYQViewModel}"
+      d:DesignHeight="814" d:DesignWidth="985"
+      Title="JYQView">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Margin" Value="10,10,0,0"/>
+        </Style>
+        <Style TargetType="UserCtrls:NumericUpDown_Control" >
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="MinValue" Value="0"/>
+        </Style>
+        <Style TargetType="TextBox" >
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <GroupBox Header="逻辑通道" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="522" Height="75">
+            <StackPanel Orientation="Vertical">
+                <WrapPanel Orientation="Horizontal" x:Name="entPanel" Height="25">
+
+                </WrapPanel>
+                <StackPanel Margin="20,0,0,0" Orientation="Horizontal" >
+                    <CheckBox Content="Y轴全动" Margin="0,0,10,0" IsChecked="{Binding IsUseTMotor}"/>
+                    <CheckBox Content="更新气压曲线" Margin="0,0,10,0" IsChecked="{Binding IsUpDataPrePoint}"/>
+                    <CheckBox Content="更新气压值" Margin="0,0,10,0" Command="{s:Action AdUpload}" IsChecked="{Binding IsUpLoadAD}"/>
+                    <Button Content="清除气压曲线" Margin="10,0,10,0" Command="{s:Action ClsPerPoints}" Width="90" Height="25"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" Margin="10,70,0,0" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="700">
+            <Button Content="初始化Z" Command="{s:Action InitZ}"/>
+            <Button Content="全部初始化" Command="{s:Action InitAll}"/>
+            <Button Content="吸头检测" Visibility="Hidden"/>
+        </StackPanel>
+        <WrapPanel Margin="541,70,0,0" Height="155" VerticalAlignment="Top" Width="444" HorizontalAlignment="Left">
+            <Button Content="移动Z" Command="{s:Action MoveZ}"/>
+            <Label Content="目标位置" Margin="10,10"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceZ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Height="104" VerticalAlignment="Top" HorizontalAlignment="Left" Width="442">
+                <Button Content="液面探测" Command="{s:Action Detect}"/>
+                <WrapPanel Margin="0,0,0,0" Height="104" VerticalAlignment="Top" Width="217" HorizontalAlignment="Left">
+                    <Label Content="Z极限位置" Margin="10,10"/>
+                    <UserCtrls:NumericUpDown_Control Height="30" Width="91" Margin="10,10,10,5" Value="{Binding ZLimitWhenDetecting,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxValue="99999"/>
+                    <Label Content="Z探测加深" Margin="10,10"/>
+                    <UserCtrls:NumericUpDown_Control Height="30" Width="91" Margin="10,10,10,5" Value="{Binding ZDeepWhenDetecting,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" MaxValue="99999"/>
+                </WrapPanel>
+            </StackPanel>
+            <Label Content="{Binding ErrorMsg, Mode=TwoWay}" Margin="0,10" Width="371" Foreground="Red"/>
+        </WrapPanel>
+        <WrapPanel Margin="10,227,0,0" Height="140" VerticalAlignment="Top" Width="444" HorizontalAlignment="Left">
+            <Button Content="初始化X" Command="{s:Action InitX}"/>
+            <Button Content="移动X" Command="{s:Action MoveX}"/>
+
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceX,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="初始化Y" Command="{s:Action InitY}"/>
+            <Button Content="移动Y" Command="{s:Action MoveY}"/>
+
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="10,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistanceY,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="初始化吸液泵 " Grid.RowSpan="1" Margin="10,0,0,0" Command="{s:Action InitPump}" Grid.Row="1"/>
+        </WrapPanel>
+
+        <WrapPanel Orientation="Horizontal" Margin="5,120,0,0" Height="137" Width="522" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <Button Content="吸液" Command="{s:Action Absorb}"/>
+            <Label Content="吸液速度" Margin="10,10"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="0,10" MaxValue="99999" Decimation="0" Step="1" Value="{Binding AbsorbSpeed,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="吸液量" Margin="10,10"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="0,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding AbsorbVol,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="分液" Grid.RowSpan="1" Margin="10,0,0,0" Command="{s:Action Distribute}"/>
+            <Label Content="分液速度" Margin="10,10"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="0,10" MaxValue="99999" Decimation="0" Step="1" Value="{Binding DistributeSpeed,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Content="分液量" Margin="10,10"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="100" Margin="0,10" MaxValue="99999" Decimation="2" Step="0.01" Value="{Binding DistributeVol,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+
+
+        </WrapPanel>
+
+        <WrapPanel Margin="541,227,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Height="140" Width="434">
+            <Button Content="装针" Command="{s:Action TakeTip}" Width="70"/>
+            <Button Content="脱针" Command="{s:Action PutTip}" Width="70"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="70"  Margin="10,10,10,0" ItemsSource="{Binding TargetBJList}" SelectedItem="{Binding SelectedBJ}" DisplayMemberPath="Name"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="70" Margin="10,10,10,0" MaxValue="11" Value="{Binding SeatXIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <UserCtrls:NumericUpDown_Control Height="30" Width="70" Margin="10,10,10,0" MaxValue="24" Value="{Binding SeatYIndex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="吸液" Command="{s:Action AbsLiquid }" Width="70"/>
+            <Button Content="分配" Command="{s:Action SubLiquid }" Width="70"/>
+            <Button Content="移动XY" Command="{s:Action MoveXY }" Width="70"/>
+            <Button Content="顺序移动" Command="{s:Action MoveXYSort }" Width="70"/>
+            <Button Content="设置吸头盒" Command="{s:Action ShowNeedlePlate }" Width="70"/>
+            <Button Content="吸头探测" Command="{s:Action CheckTip }" Width="70"/>
+            <Button Content="自动装针" Command="{s:Action TakeTipAuto}" Width="70"/>
+        </WrapPanel>
+        <Grid Margin="0,535,0,0">
+            <oxy:Plot Title="气压" Margin="0,-161,0,0">
+                <oxy:Plot.Axes>
+                    <oxy:DateTimeAxis Title="时间" />
+                    <oxy:LinearAxis Maximum="4000" Minimum="0" Title="数值" />
+                </oxy:Plot.Axes>
+
+                <oxy:Plot.Series>
+                    <oxy:LineSeries  Title="1#" MarkerType="Circle" ItemsSource="{Binding Pre1Points}"/>
+                    <oxy:LineSeries  Title="2#" MarkerType="Circle" ItemsSource="{Binding Pre2Points}"/>
+                    <oxy:LineSeries  Title="3#" MarkerType="Circle" ItemsSource="{Binding Pre3Points}"/>
+                    <oxy:LineSeries  Title="4#" MarkerType="Circle" ItemsSource="{Binding Pre4Points}"/>
+                </oxy:Plot.Series>
+            </oxy:Plot>
+
+        </Grid>
+
+
+    </Grid>
+</Page>
